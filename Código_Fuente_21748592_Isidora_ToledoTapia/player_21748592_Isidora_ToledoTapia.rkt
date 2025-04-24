@@ -20,11 +20,32 @@
 ;--------------------------------------------------------
 
 
-; Descripción: Selector de id Jugador
+; Descripción: Selector Id Jugador
 ; Dom: jugador
 ; Rec: id
 ; Tipo recursión: No utiliza
 (define (get-id jugador)
   (car jugador))
 
+
+;--------------------------------------------------------
+
+
+; Descripción: Selector Nombre Jugador
+; Dom: jugador
+; Rec: nombre
+; Tipo recursión: No utiliza
+(define (get-nombre jugador)
+  (cadr jugador))
+
+;--------------------------------------------------------
+
+
+; Descripción: Selector Dinero Jugador
+; Dom: jugador
+; Rec: dinero
+; Tipo recursión: No utiliza
+
+(define (get-dinero jugador)
+  (caddr jugador))
 
