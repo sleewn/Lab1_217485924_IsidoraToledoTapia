@@ -49,3 +49,14 @@
 (define (get-dinero jugador)
   (caddr jugador))
 
+;--------------------------------------------------------
+
+
+; Descripción: Selector Propiedades Jugador
+; Dom: jugador
+; Rec: propiedades
+; Tipo recursión: No utiliza
+
+(define (get-propiedades jugador)
+  (cadddr jugador))
+
