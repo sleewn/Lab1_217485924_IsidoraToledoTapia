@@ -60,3 +60,13 @@
 (define (get-propiedades jugador)
   (cadddr jugador))
 
+
+;--------------------------------------------------------
+
+
+; Descripción: Selector Posición Jugador
+; Dom: jugador
+; Rec: posición
+; Tipo recursión: No utiliza
+(define (get-pos jugador)
+  (car (cddddr jugador)))
