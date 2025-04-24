@@ -82,3 +82,13 @@
 (define (get-en-carcel jugador)
   (cadr (cddddr jugador)))
 
+
+;--------------------------------------------------------
+
+
+; Descripción: Selector 
+; Dom: jugador
+; Rec: cartas-carcel
+; Tipo recursión: No utiliza
+(define (get-cartas-carcel jugador)
+  (caddr (cddddr jugador)))
