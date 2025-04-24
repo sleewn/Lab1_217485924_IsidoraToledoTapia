@@ -1,7 +1,7 @@
 #lang racket
 
 
-
+(require "player_21748592_Isidora_ToledoTapia.rkt")
 
 ;--------------------------------------------------------
 
@@ -14,3 +14,5 @@
 (define (carta id tipo descripcion accion)
   (list id tipo descripcion accion))
   
+(define (ir-a-salida jugador)
+  (set-pos jugador 0))

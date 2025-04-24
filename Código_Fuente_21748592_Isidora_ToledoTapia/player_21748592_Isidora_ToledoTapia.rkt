@@ -1,6 +1,15 @@
 #lang racket
 
 
+(provide jugador
+         get-id
+         get-nombre
+         get-dinero
+         get-propiedades
+         get-pos
+         get-en-carcel
+         get-cartas-carcel
+         set-pos)
 
 
 
