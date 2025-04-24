@@ -70,3 +70,15 @@
 ; Tipo recursión: No utiliza
 (define (get-pos jugador)
   (car (cddddr jugador)))
+
+
+;--------------------------------------------------------
+
+
+; Descripción: Selector en-carcel Jugador
+; Dom: jugador
+; Rec: #t | #f
+; Tipo recursión: No utiliza
+(define (get-en-carcel jugador)
+  (cadr (cddddr jugador)))
+
