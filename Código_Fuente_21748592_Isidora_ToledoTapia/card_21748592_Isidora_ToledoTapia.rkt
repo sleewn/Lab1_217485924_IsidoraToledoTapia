@@ -16,8 +16,8 @@
 ;--------------------------------------------------------
 
 ; Descripción: Lleva al Jugador a la Salida
-; Dom: id (int) X tipo (string) X descripcion (string) X accion (funcion)
-; Rec: carta
+; Dom: jugador
+; Rec: jugador
 ; Tipo recursión: No utiliza
   
 (define (ir-a-salida jugador)
@@ -26,8 +26,18 @@
 ;--------------------------------------------------------
 
 ; Descripción: Lleva al jugador a la cárcel
-; Dom: id (int) X tipo (string) X descripcion (string) X accion (funcion)
-; Rec: carta
+; Dom: jugador
+; Rec: jugador
 ; Tipo recursión: No utiliza
 (define (ir-a-carcel jugador)
   (set-en-carcel (set-pos jugador -1) #t)) ; -1 como casilla de la cárcel
+
+
+;--------------------------------------------------------
+
+; Descripción: El jugador paga impuestos
+; Dom: jugador
+; Rec: jugador
+; Tipo recursión: No utiliza
+(define (pagar-impuesto jugador)
+  (set-dinero jugador (- (get-dinero jugador) 100)))
