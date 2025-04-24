@@ -9,7 +9,9 @@
          get-pos
          get-en-carcel
          get-cartas-carcel
-         set-pos)
+         set-pos
+         set-dinero
+         set-en-carcel)
 
 
 

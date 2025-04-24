@@ -8,13 +8,26 @@
 ; Descripción: Constructor Carta
 ; Dom: id (int) X tipo (string) X descripcion (string) X accion (funcion)
 ; Rec: carta
-; Tipo recursión: 
-
+; Tipo recursión: No utiliza
 
 (define (carta id tipo descripcion accion)
   (list id tipo descripcion accion))
+
+;--------------------------------------------------------
+
+; Descripción: Lleva al Jugador a la Salida
+; Dom: id (int) X tipo (string) X descripcion (string) X accion (funcion)
+; Rec: carta
+; Tipo recursión: No utiliza
   
 (define (ir-a-salida jugador)
   (set-pos jugador 0))
 
+;--------------------------------------------------------
 
+; Descripción: Lleva al jugador a la cárcel
+; Dom: id (int) X tipo (string) X descripcion (string) X accion (funcion)
+; Rec: carta
+; Tipo recursión: No utiliza
+(define (ir-a-carcel jugador)
+  (set-en-carcel (set-pos jugador -1) #t)) ; -1 como casilla de la cárcel
