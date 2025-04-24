@@ -16,3 +16,5 @@
   
 (define (ir-a-salida jugador)
   (set-pos jugador 0))
+
+

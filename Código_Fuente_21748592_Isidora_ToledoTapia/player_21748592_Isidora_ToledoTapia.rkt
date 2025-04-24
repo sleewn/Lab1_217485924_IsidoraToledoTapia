@@ -95,7 +95,7 @@
 ;--------------------------------------------------------
 
 
-; Descripción: Selector 
+; Descripción: Selector de cartas para salir de la cárcel
 ; Dom: jugador
 ; Rec: cartas-carcel
 ; Tipo recursión: No utiliza
@@ -105,7 +105,7 @@
 
 ;--------------------------------------------------------
 
-; Descripción: Modificador de Posición
+; Descripción: Modificador de la Posición del Jugador 
 ; Dom: jugador X nueva-pos
 ; Rec: jugador
 ; Tipo recursión: No utiliza
@@ -113,4 +113,18 @@
 (define (set-pos jugador nueva-pos)
   (jugador (get-id jugador) (get-nombre jugador) (get-dinero jugador)
                 (get-propiedades jugador) nueva-pos
+                (get-en-carcel jugador) (get-cartas-carcel jugador)))
+
+
+
+;--------------------------------------------------------
+
+; Descripción: Modificador del Dinero del Jugador
+; Dom: jugador X nuevo-dinero
+; Rec: jugador
+; Tipo recursión: No utiliza
+
+(define (set-dinero jugador nuevo-dinero)
+  (jugador (get-id jugador) (get-nombre jugador) nuevo-dinero
+                (get-propiedades jugador) (get-pos jugador)
                 (get-en-carcel jugador) (get-cartas-carcel jugador)))
