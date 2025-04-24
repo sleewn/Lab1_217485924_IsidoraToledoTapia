@@ -18,3 +18,13 @@
 
 
 ;--------------------------------------------------------
+
+
+; Descripción: Selector de id Jugador
+; Dom: jugador
+; Rec: id
+; Tipo recursión: No utiliza
+(define (get-id jugador)
+  (car jugador))
+
+
