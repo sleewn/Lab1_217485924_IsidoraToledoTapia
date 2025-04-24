@@ -92,3 +92,16 @@
 ; Tipo recursión: No utiliza
 (define (get-cartas-carcel jugador)
   (caddr (cddddr jugador)))
+
+
+;--------------------------------------------------------
+
+; Descripción: Modificador de Posición
+; Dom: jugador X nueva-pos
+; Rec: jugador
+; Tipo recursión: No utiliza
+
+(define (set-pos jugador nueva-pos)
+  (jugador (get-id jugador) (get-nombre jugador) (get-dinero jugador)
+                (get-propiedades jugador) nueva-pos
+                (get-en-carcel jugador) (get-cartas-carcel jugador)))
