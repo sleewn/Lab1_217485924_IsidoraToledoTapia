@@ -128,3 +128,17 @@
   (jugador (get-id jugador) (get-nombre jugador) nuevo-dinero
                 (get-propiedades jugador) (get-pos jugador)
                 (get-en-carcel jugador) (get-cartas-carcel jugador)))
+
+;--------------------------------------------------------
+
+; Descripción: Modificador de bool en-carcel
+; Dom: jugador X nuevo-estado
+; Rec: jugador
+; Tipo recursión: No utiliza
+
+
+(define (set-en-carcel jugador nuevo-estado)
+  (jugador (get-id jugador) (get-nombre jugador) (get-dinero jugador)
+                (get-propiedades jugador) (get-pos jugador)
+                nuevo-estado (get-cartas-carcel jugador)))
+
