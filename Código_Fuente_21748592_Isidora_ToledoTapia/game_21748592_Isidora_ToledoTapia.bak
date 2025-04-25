@@ -24,9 +24,3 @@
 (define partida (juego '() tablero-juego 20000 2 0 10 4
 1 "preparacion"))
 partida
-
-
-
-
-
-
