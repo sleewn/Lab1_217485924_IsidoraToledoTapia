@@ -36,6 +36,20 @@ partida
 (define (get-jugadores juego)
   (car juego))
 
+;--------------------------------------------------------
+ 
+; Descripción: Selector del tablero del Juego
+; Dom: juego
+; Rec: tablero
+; Tipo recursión: No utiliza
+
+
+(define (get-tablero juego)
+  (cadr juego))
+
+
+
+
 
 ;--------------------------------------------------------
 
