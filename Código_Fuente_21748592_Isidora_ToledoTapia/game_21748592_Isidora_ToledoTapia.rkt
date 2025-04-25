@@ -107,7 +107,16 @@ partida
   (car (cddddr juego)))
 
 
+;--------------------------------------------------------
+ 
+; Descripción: Selector del máximo de hoteles por propiedad del Juego
+; Dom: juego
+; Rec: máximo de hoteles por propiedad
+; Tipo recursión: No utiliza
 
+
+(define (get-maximo-hoteles juego)
+  (cadr (cddddr juego)))
 
 
 ;--------------------------------------------------------
