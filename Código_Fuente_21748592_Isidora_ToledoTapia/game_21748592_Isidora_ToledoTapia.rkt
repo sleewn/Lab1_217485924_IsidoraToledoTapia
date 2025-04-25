@@ -96,6 +96,18 @@ partida
 
 
 
+;--------------------------------------------------------
+ 
+; Descripción: Selector del máximo de casas por propiedad del Juego
+; Dom: juego
+; Rec: máximo de casas por propiedad
+; Tipo recursión: No utiliza
+
+(define (get-maximo-casas juego)
+  (car (cddddr juego)))
+
+
+
 
 
 ;--------------------------------------------------------
