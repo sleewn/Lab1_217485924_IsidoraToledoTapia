@@ -27,6 +27,17 @@ partida
 
 
 ;--------------------------------------------------------
+ 
+; Descripción: Selector de jugadores del Juego
+; Dom: juego
+; Rec: jugadores
+; Tipo recursión: No utiliza
+
+(define (get-jugadores juego)
+  (car juego))
+
+
+;--------------------------------------------------------
 
 ; Descripción: Agregar jugador
 ; Dom: juego (juego) X jugador (jugador)
