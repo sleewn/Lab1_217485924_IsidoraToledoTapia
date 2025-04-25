@@ -83,7 +83,16 @@ partida
   (cadr (cdddr juego)))
 
 
+;--------------------------------------------------------
+ 
+; Descripción: Selector de la tasa de impuesto del Juego
+; Dom: juego
+; Rec: tasa de impuestos
+; Tipo recursión: No utiliza
 
+
+(define (get-tasa-impuesto juego)
+  (caddr (cdddr juego)))
 
 
 
