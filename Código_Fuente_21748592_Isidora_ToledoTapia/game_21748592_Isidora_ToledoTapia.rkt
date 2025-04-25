@@ -71,6 +71,20 @@ partida
   (car (cdddr juego)))
 
 
+;--------------------------------------------------------
+ 
+; Descripción: Selector del turno actual del Juego
+; Dom: juego
+; Rec: turno actual
+; Tipo recursión: No utiliza
+
+
+(define (get-turno-actual juego)
+  (cadr (cdddr juego)))
+
+
+
+
 
 
 
