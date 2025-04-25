@@ -48,6 +48,30 @@ partida
   (cadr juego))
 
 
+;--------------------------------------------------------
+ 
+; Descripción: Selector del dinero del banco del Juego
+; Dom: juego
+; Rec: dinero del banco
+; Tipo recursión: No utiliza
+
+
+(define (get-dinero-banco juego)
+  (caddr juego))
+
+
+;--------------------------------------------------------
+ 
+; Descripción: Selector del número de dados del Juego
+; Dom: juego
+; Rec: número de dados
+; Tipo recursión: No utiliza
+
+(define (get-numero-dados juego)
+  (car (cdddr juego)))
+
+
+
 
 
 
