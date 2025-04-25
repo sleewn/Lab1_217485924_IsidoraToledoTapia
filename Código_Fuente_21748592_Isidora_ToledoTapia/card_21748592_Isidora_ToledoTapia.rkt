@@ -41,3 +41,12 @@
 ; Tipo recursión: No utiliza
 (define (pagar-impuesto jugador)
   (set-dinero jugador (- (get-dinero jugador) 100)))
+
+;--------------------------------------------------------
+
+; Descripción: El jugador paga impuestos
+; Dom: jugador
+; Rec: jugador
+; Tipo recursión: No utiliza
+
+
