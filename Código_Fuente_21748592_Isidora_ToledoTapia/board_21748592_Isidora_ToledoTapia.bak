@@ -1,7 +1,7 @@
 #lang racket
 
 
-(provide tablero-juego)
+
 
 ;--------------------------------------------------------
 
@@ -15,4 +15,9 @@
 (define (tablero propiedades cartas-suerte cartas-comunidad casilllas-especiales)
   (list propiedades cartas-suerte cartas-comunidad casilllas-especiales))
 
+
+
+
+
 (define tablero-juego (tablero '() '() '() '()))
+tablero-juego
