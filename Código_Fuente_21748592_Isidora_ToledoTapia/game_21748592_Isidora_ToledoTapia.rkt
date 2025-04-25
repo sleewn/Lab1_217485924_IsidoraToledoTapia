@@ -120,6 +120,20 @@ partida
 
 
 ;--------------------------------------------------------
+ 
+; Descripción: Selector del estado del Juego
+; Dom: juego
+; Rec: estado del juego
+; Tipo recursión: No utiliza
+
+
+(define (get-estado-juego juego)
+  (caddr (cddddr juego)))
+
+
+
+
+;--------------------------------------------------------
 
 ; Descripción: Agregar jugador
 ; Dom: juego (juego) X jugador (jugador)
