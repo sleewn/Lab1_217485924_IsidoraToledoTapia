@@ -1,6 +1,8 @@
 #lang racket
 
 
+(require "property_21748592_Isidora_ToledoTapia.rkt")
+
 (provide jugador
          get-id
          get-nombre
@@ -152,6 +154,27 @@
 (define j1 (jugador 0 "jugador1" 1500 '() 0 #f 0))
 
 
+;--------------------------------------------------------
+
+; Descripción: Verifica si el jugador tiene suficiente dinero para comprar
+             ; y actualiza su lista de propiedades junto a su dinero
+; Dom: jugador (jugador) X propiedad (propiedad)
+; Rec: jugador
+; Tipo recursión: No utiliza
+
+(define (jugador-comprar-propiedad player property)
+  (cond [(>= (get-dinero player) (get-precio-propiedad property))
+     (jugador (get-id player) (get-nombre player)
+              (- (get-dinero player) (get-precio-propiedad property))
+              (cons property (get-propiedades player))
+              (get-pos player)
+              (get-en-carcel player)
+              (get-cartas-carcel player))]
+    
+    [else player])) ; No puede comprar
 
 
+(define jugador-despues-compra
+(jugador-comprar-propiedad j1 prop1))
 
+jugador-despues-compra

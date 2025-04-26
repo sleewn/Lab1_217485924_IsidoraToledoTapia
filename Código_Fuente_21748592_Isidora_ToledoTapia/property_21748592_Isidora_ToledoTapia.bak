@@ -1,8 +1,7 @@
 #lang racket
 
 
-(provide get-precio-propiedad
-         prop1)
+
 
 ;--------------------------------------------------------
 
@@ -16,7 +15,3 @@
 (define (propiedad id nombre precio renta dueño casas esHotel estaHipotecada)
   (list id nombre precio renta dueño casas esHotel estaHipotecada))
 
-(define (get-precio-propiedad propiedad)
-  (caddr propiedad))
-
-(define prop1 (propiedad 1 "Paseo Mediterráneo" 60 2 #f 0 #f #f))
