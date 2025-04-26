@@ -170,9 +170,22 @@
 (define (juego-obtener-jugador-actual juego)
   (list-ref (get-jugadores juego) (get-turno-actual juego)))
 
-(juego-obtener-jugador-actual juego-actualizado)
 
 
 
+; Funcion myRandom
+(define (myRandom Xn)
+(modulo (+ (* 1103515245 Xn) 12345)
+2147483648))
 
+; Funcion getDadoRandom que recibe la semilla y controla los resultados
+(define (getDadoRandom seed)
+(+ 1 (modulo (myRandom seed) 6)))
 
+;; Valores de referencia seed para retornar entre 1 a 6
+(getDadoRandom 1) ; retorna 1
+(getDadoRandom 2) ; retorna 2
+(getDadoRandom 5) ; retorna 3
+(getDadoRandom 0) ; retorna 4
+(getDadoRandom 3) ; retorna 5
+(getDadoRandom 4) ; retorna 6
