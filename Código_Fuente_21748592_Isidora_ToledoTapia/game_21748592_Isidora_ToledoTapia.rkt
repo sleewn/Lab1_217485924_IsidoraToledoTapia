@@ -159,19 +159,18 @@
 
 ;--------------------------------------------------------
 
-; Descripción: Busca al jugador en la posición n
-; Dom: lista jugadores X posición n
-; Rec: jugador en la posición n
-; Tipo recursión: Recursión Natural
+; Descripción: Obtener jugador actual
+; Dom: juego
+; Rec: jugador actual
+; Tipo recursión: No utiliza
 
-; El jugador actual es el jugador que está en la posición n de la lista
-
-(define (buscar-jugador jugadores n)
-  (cond [(= n 0) (car jugadores)] ; Caso base, si n=0 devuelve el primero de la lista
-    [else (buscar-jugador (cdr jugadores) (- n 1))]))  ; Si no, sigue buscando
+; "Resolver de forma declarativa"
 
 
+(define (juego-obtener-jugador-actual juego)
+  (list-ref (get-jugadores juego) (get-turno-actual juego)))
 
+(juego-obtener-jugador-actual juego-actualizado)
 
 
 
