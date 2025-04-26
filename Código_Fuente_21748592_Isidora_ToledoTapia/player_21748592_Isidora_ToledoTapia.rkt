@@ -11,7 +11,8 @@
          get-cartas-carcel
          set-pos
          set-dinero
-         set-en-carcel)
+         set-en-carcel
+         j1)
 
 
 
@@ -143,4 +144,14 @@
   (jugador (get-id jugador) (get-nombre jugador) (get-dinero jugador)
                 (get-propiedades jugador) (get-pos jugador)
                 nuevo-estado (get-cartas-carcel jugador)))
+
+
+
+;Ejemplo de uso
+
+(define j1 (jugador 0 "jugador1" 1500 '() 0 #f 0))
+
+
+
+
 

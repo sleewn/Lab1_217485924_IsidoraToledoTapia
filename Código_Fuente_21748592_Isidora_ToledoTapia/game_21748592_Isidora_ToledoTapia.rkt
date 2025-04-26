@@ -19,13 +19,6 @@
                tasaImpuesto maximoCasas maximoHoteles estadoJuego))
 
 
-
-
-(define partida (juego '() tablero-juego 20000 2 0 10 4
-1 "preparacion"))
-partida
-
-
 ;--------------------------------------------------------
  
 ; Descripción: Selector de jugadores del Juego
@@ -131,7 +124,10 @@ partida
   (caddr (cddddr juego)))
 
 
+; Ejemplo de uso:
 
+(define partida-capitalia (juego '() tablero-juego 20000 2 0 10 4
+1 "preparacion"))
 
 ;--------------------------------------------------------
 
@@ -140,12 +136,20 @@ partida
 ; Rec: juego
 ; Tipo recursión: No utiliza
 
-;(define (juego-agregar-jugador juego jugador)
-  ;(define jugador-con-capital (jugador(get-id jugador) (get-nombre jugador)
-                              ;1500 (get-propiedades jugador) (get-pos jugador)
-                              ;(get-en-carcel jugador) (get-cartas-carcel jugador))))
+(define (juego-agregar-jugador partida player)
+  (juego (cons (jugador (get-id player) (get-nombre player) 1500
+               (get-propiedades player) (get-pos player) (get-en-carcel player)
+               (get-cartas-carcel player))
+               
+               (get-jugadores partida))
 
+         (get-tablero partida)
+         (get-dinero-banco partida)
+         (get-numero-dados partida)
+         (get-turno-actual partida)
+         (get-tasa-impuesto partida)
+         (get-maximo-casas partida)
+         (get-maximo-hoteles partida)
+         (get-estado-juego partida)))
 
-
-
-;(define juego-actualizado (juego-agregar-jugador partida-capitalia j1))
+(define juego-actualizado (juego-agregar-jugador partida-capitalia j1))
