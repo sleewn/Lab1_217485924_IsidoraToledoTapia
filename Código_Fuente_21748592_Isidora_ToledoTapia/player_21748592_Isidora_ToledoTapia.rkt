@@ -178,3 +178,13 @@
 (jugador-comprar-propiedad j1 prop1))
 
 jugador-despues-compra
+
+
+
+;--------------------------------------------------------
+
+; Descripción: Función para calcular la renta de una propiedad
+; Dom: jugador (jugador) X juego (TDA Juego)
+; Rec: int (monto de la renta)
+; Tipo recursión: No utiliza
+
