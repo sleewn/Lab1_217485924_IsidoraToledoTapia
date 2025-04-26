@@ -1,7 +1,12 @@
 #lang racket
 
+
 (require "board_21748592_Isidora_ToledoTapia.rkt")
 (require "player_21748592_Isidora_ToledoTapia.rkt")
+
+(provide get-maximo-casas
+         get-maximo-hoteles)
+         
 
 
 ;--------------------------------------------------------
