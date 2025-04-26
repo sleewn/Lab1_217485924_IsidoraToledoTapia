@@ -153,3 +153,27 @@
          (get-estado-juego partida)))
 
 (define juego-actualizado (juego-agregar-jugador partida-capitalia j1))
+
+
+
+
+;--------------------------------------------------------
+
+; Descripción: Busca al jugador en la posición n
+; Dom: lista jugadores X posición n
+; Rec: jugador en la posición n
+; Tipo recursión: Recursión Natural
+
+; El jugador actual es el jugador que está en la posición n de la lista
+
+(define (buscar-jugador jugadores n)
+  (cond [(= n 0) (car jugadores)] ; Caso base, si n=0 devuelve el primero de la lista
+    [else (buscar-jugador (cdr jugadores) (- n 1))]))  ; Si no, sigue buscando
+
+
+
+
+
+
+
+
