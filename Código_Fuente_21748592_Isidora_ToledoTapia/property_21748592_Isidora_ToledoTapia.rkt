@@ -153,10 +153,12 @@
 ; Tipo recursión: No utiliza
 
 
-;(define (propiedad-construir-casa p j)
-  ;(cond [< (get-casas-propiedad p) (get-maximo-casas j)]
-        ;(actualizar-propiedad p (+ (get-casas-propiedad p) 1))
-  ;[else p]))
+(define (propiedad-construir-casa p j)
+  (cond [< (get-casas-propiedad p) (get-maximo-casas j)]
+        (actualizar-propiedad p (+ (get-casas-propiedad p) 1))
+  [else p]))
+
+
 
 
 
