@@ -95,6 +95,23 @@
   (cadr (cddddr propiedad)))
 
 
+
+;--------------------------------------------------------
+
+
+; Descripción: Selector de esHotel de la propiedad
+; Dom: propiedad
+; Rec: esHotel (bool)
+; Tipo recursión: No utiliza
+
+(define (get-casas-propiedad propiedad)
+  (caddr (cddddr propiedad)))
+
+
+
+
+
+
 ;--------------------------------------------------------
 
 
