@@ -1,7 +1,6 @@
 #lang racket
 
 
-(require "property_21748592_Isidora_ToledoTapia.rkt")
 
 (provide jugador
          get-id
@@ -163,9 +162,9 @@
 ; Tipo recursión: No utiliza
 
 (define (jugador-comprar-propiedad player property)
-  (cond [(>= (get-dinero player) (get-precio-propiedad property))
+  (cond [(>= (get-dinero player) (caddr property))
      (jugador (get-id player) (get-nombre player)
-              (- (get-dinero player) (get-precio-propiedad property))
+              (- (get-dinero player) (caddr property))
               (cons property (get-propiedades player))
               (get-pos player)
               (get-en-carcel player)
@@ -173,11 +172,6 @@
     
     [else player])) ; No puede comprar
 
-
-(define jugador-despues-compra
-(jugador-comprar-propiedad j1 prop1))
-
-jugador-despues-compra
 
 
 

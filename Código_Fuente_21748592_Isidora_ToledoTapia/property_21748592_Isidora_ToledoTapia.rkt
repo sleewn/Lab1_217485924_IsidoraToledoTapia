@@ -1,5 +1,9 @@
 #lang racket
 
+(require "game_21748592_Isidora_ToledoTapia.rkt")
+
+
+
 (provide get-precio-propiedad
          prop1)
 
@@ -151,10 +155,8 @@
 
 ;(define (propiedad-construir-casa p j)
   ;(cond [< (get-casas-propiedad p) (get-maximo-casas j)]
-      ;(actualizar-propiedad p (+ (propiedad-cantidad-casas propiedad) 1))
-
-; Ejemplo de uso
-;(define prop-con-casa (propiedad-construir-casa prop1 g3))
+        ;(actualizar-propiedad p (+ (get-casas-propiedad p) 1))
+  ;[else p]))
 
 
 
