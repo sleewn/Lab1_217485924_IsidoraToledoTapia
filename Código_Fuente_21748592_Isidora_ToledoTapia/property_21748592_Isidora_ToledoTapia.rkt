@@ -193,3 +193,28 @@
         (actualizar-propiedad-con-hotel p #t)
   [else p]))
      
+
+
+
+
+;--------------------------------------------------------
+
+
+; Descripción: Hipotecar Propiedad, cambia el estado de la propiedad a hipotecada.
+; Dom: propiedad (propiedad)
+; Rec: propiedad
+; Tipo recursión: No utiliza
+
+
+(define (propiedad-hipotecar p)
+  (propiedad ((get-id-propiedad p) (get-nombre-propiedad p)
+             (get-precio-propiedad p) (get-renta-propiedad p)
+             (get-dueño-propiedad p) (get-casas-propiedad p)
+             (get-esHotel-propiedad p) #t)))
+             
+
+
+
+
+
+
