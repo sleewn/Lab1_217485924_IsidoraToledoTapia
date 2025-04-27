@@ -104,7 +104,7 @@
 ; Rec: esHotel (bool)
 ; Tipo recursión: No utiliza
 
-(define (get-casas-propiedad propiedad)
+(define (get-esHotel-propiedad propiedad)
   (caddr (cddddr propiedad)))
 
 
@@ -117,7 +117,7 @@
 ; Tipo recursión: No utiliza
 
 
-(define (get-casas-propiedad propiedad)
+(define (get-estaHipotecada-propiedad propiedad)
   (cadddr (cddddr propiedad)))
 
 
@@ -129,8 +129,12 @@
 ; Rec: propiedad
 ; Tipo recursión: No utiliza
 
-;(define (actualizar-propiedad p nueva-cantidad-casas)
-  ;(propiedad (
+(define (actualizar-propiedad p nueva-cantidad-casas)
+  (propiedad ((get-id-propiedad p) (get-nombre-propiedad p)
+             (get-precio-propiedad p) (get-renta-propiedad p)
+             (get-dueño-propiedad p) nueva-cantidad-casas
+             get-esHotel-propiedad p) (get-estaHipotecada-propiedad p)))
+             
 
 
 
