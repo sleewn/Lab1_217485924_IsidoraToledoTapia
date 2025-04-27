@@ -160,5 +160,17 @@
 
 
 
+;--------------------------------------------------------
 
 
+; Descripción: Construir Hotel, convertir las casas en un hotel
+             ;si se tiene el máximo de casas permitido
+; Dom: propiedad (propiedad) X juego (juego)
+; Rec: propiedad
+; Tipo recursión: No utiliza
+
+;(define (propiedad-construir-hotel p j)
+  ;(cond [= (get-casas-propiedad p) (get-maximo-casas j)]
+        ;(actualizar-propiedad-con-hotel p)
+  ;[else p]))
+     
