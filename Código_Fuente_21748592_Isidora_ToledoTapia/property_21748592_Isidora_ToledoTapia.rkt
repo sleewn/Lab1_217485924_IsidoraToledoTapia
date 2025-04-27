@@ -137,7 +137,7 @@
   (propiedad ((get-id-propiedad p) (get-nombre-propiedad p)
              (get-precio-propiedad p) (get-renta-propiedad p)
              (get-dueño-propiedad p) nueva-cantidad-casas
-             get-esHotel-propiedad p) (get-estaHipotecada-propiedad p)))
+             (get-esHotel-propiedad p) (get-estaHipotecada-propiedad p))))
              
 
 
@@ -157,6 +157,25 @@
   (cond [< (get-casas-propiedad p) (get-maximo-casas j)]
         (actualizar-propiedad p (+ (get-casas-propiedad p) 1))
   [else p]))
+
+
+
+;--------------------------------------------------------
+
+
+; Descripción: Actualiza si es Hotel de la propiedad
+; Dom: propiedad
+; Rec: propiedad
+; Tipo recursión: No utiliza
+
+
+(define (actualizar-propiedad-con-hotel p nuevo-esHotel)
+  (propiedad ((get-id-propiedad p) (get-nombre-propiedad p)
+             (get-precio-propiedad p) (get-renta-propiedad p)
+             (get-dueño-propiedad p) 0
+             nuevo-esHotel (get-estaHipotecada-propiedad p))))
+             
+
 
 
 
