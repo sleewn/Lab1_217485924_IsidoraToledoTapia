@@ -28,7 +28,17 @@
 (define (get-id-propiedad propiedad)
   (car propiedad))
 
+;--------------------------------------------------------
 
+
+; Descripción: Selector de nombre de la propiedad
+; Dom: propiedad
+; Rec: id
+; Tipo recursión: No utiliza
+
+
+(define (get-nombre-propiedad propiedad)
+  (cadr propiedad))
 
 
 ;--------------------------------------------------------
