@@ -27,3 +27,15 @@ p1
 
 prop1
 
+; 3. Creación de cartas de suerte y arca comunal
+; TDA Carta =
+
+
+(define chance1 (carta 1 "suerte" "Avance hasta la casilla de salida" 'ir-a-salida))
+(define chance2 (carta 2 "suerte" "Vaya a la cárcel" 'ir-a-carcel))
+(define chance3 (carta 3 "suerte" "El banco le paga $50" 'banco-paga))
+
+
+(define community1 (carta 4 "comunidad" "Pague impuestos por $100" 'pagar-impuesto))
+(define community2 (carta 5 "comunidad" "Es su cumpleaños, reciba $10 de cada jugador" 'cumpleanos))
+(define community3 (carta 6 "comunidad" "Salga de la cárcel gratis" 'salir-carcel))

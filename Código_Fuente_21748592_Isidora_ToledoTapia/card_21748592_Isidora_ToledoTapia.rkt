@@ -3,6 +3,11 @@
 
 (require "player_21748592_Isidora_ToledoTapia.rkt")
 
+(provide carta
+         ir-a-salida
+         ir-a-carcel
+         pagar-impuesto)
+
 ;--------------------------------------------------------
 
 ; Descripción: Constructor Carta
@@ -35,6 +40,16 @@
 
 ;--------------------------------------------------------
 
+; Descripción: El banco le paga al jugador
+; Dom: jugador
+; Rec: jugador
+; Tipo recursión: No utiliza
+(define (banco-paga jugador)
+  (set-dinero jugador (+ (get-dinero jugador) 50)))
+
+
+;--------------------------------------------------------
+
 ; Descripción: El jugador paga impuestos
 ; Dom: jugador
 ; Rec: jugador
@@ -44,9 +59,10 @@
 
 ;--------------------------------------------------------
 
-; Descripción: El jugador paga impuestos
+; Descripción: El jugador sale de la cárcel gratis
 ; Dom: jugador
 ; Rec: jugador
 ; Tipo recursión: No utiliza
-
+(define (salir-carcel jugador)
+  (set-en-carcel jugador #f)) ; El jugador ya no está en la cárcel
 
