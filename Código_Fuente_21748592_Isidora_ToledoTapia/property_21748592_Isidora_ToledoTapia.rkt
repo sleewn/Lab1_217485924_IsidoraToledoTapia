@@ -108,8 +108,17 @@
   (caddr (cddddr propiedad)))
 
 
+;--------------------------------------------------------
 
 
+; Descripción: Selector de estaHipotecada de la propiedad
+; Dom: propiedad
+; Rec: estaHipotecada (bool)
+; Tipo recursión: No utiliza
+
+
+(define (get-casas-propiedad propiedad)
+  (cadddr (cddddr propiedad)))
 
 
 ;--------------------------------------------------------
