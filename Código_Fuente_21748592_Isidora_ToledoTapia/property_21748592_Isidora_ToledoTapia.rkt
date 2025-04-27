@@ -15,6 +15,22 @@
 (define (propiedad id nombre precio renta dueño casas esHotel estaHipotecada)
   (list id nombre precio renta dueño casas esHotel estaHipotecada))
 
+
+;--------------------------------------------------------
+
+
+; Descripción: Selector de id de la propiedad
+; Dom: propiedad
+; Rec: id
+; Tipo recursión: No utiliza
+
+
+(define (get-id-propiedad propiedad)
+  (car propiedad))
+
+
+
+
 ;--------------------------------------------------------
 
 
@@ -44,9 +60,16 @@
   (cadr (cddddr propiedad)))
 
 
+;--------------------------------------------------------
 
 
+; Descripción: Actualiza el número de casas de la propiedad
+; Dom: propiedad
+; Rec: propiedad
+; Tipo recursión: No utiliza
 
+;(define (actualizar-propiedad p nueva-cantidad-casas)
+  ;(propiedad (
 
 
 
@@ -76,8 +99,10 @@
 ; Rec: propiedad
 ; Tipo recursión: No utiliza
 
-;(define (propiedad-construir-casa p g)
-  
+
+;(define (propiedad-construir-casa p j)
+  ;(cond [< (get-casas-propiedad p) (get-maximo-casas j)]
+      ;(actualizar-propiedad p (+ (propiedad-cantidad-casas propiedad) 1))
 
 ; Ejemplo de uso
 ;(define prop-con-casa (propiedad-construir-casa prop1 g3))
