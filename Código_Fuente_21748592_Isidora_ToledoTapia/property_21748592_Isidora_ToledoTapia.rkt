@@ -188,8 +188,8 @@
 ; Rec: propiedad
 ; Tipo recursión: No utiliza
 
-;(define (propiedad-construir-hotel p j)
-  ;(cond [= (get-casas-propiedad p) (get-maximo-casas j)]
-        ;(actualizar-propiedad-con-hotel p)
-  ;[else p]))
+(define (propiedad-construir-hotel p j)
+  (cond [= (get-casas-propiedad p) (get-maximo-casas j)]
+        (actualizar-propiedad-con-hotel p #t)
+  [else p]))
      
