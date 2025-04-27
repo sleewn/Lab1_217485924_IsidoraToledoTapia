@@ -67,10 +67,21 @@
 ; Tipo recursión: No utiliza
 
 
-(define (get-precio-propiedad propiedad)
+(define (get-renta-propiedad propiedad)
   (cadddr propiedad))
 
 
+;--------------------------------------------------------
+
+
+; Descripción: Selector de dueño de la propiedad
+; Dom: propiedad
+; Rec: renta
+; Tipo recursión: No utiliza
+
+
+(define (get-dueño-propiedad propiedad)
+  (car (cddddr propiedad)))
 
 ;--------------------------------------------------------
 
