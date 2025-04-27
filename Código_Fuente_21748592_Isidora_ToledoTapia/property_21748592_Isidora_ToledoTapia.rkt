@@ -5,7 +5,7 @@
 
 
 (provide get-precio-propiedad
-         prop1)
+         propiedad)
 
 ;--------------------------------------------------------
 

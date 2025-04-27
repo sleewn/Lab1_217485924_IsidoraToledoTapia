@@ -1,0 +1,6 @@
+#lang racket
+(require "player_21748592_Isidora_ToledoTapia.rkt")
+(require "property_21748592_Isidora_ToledoTapia.rkt")
+(require "card_21748592_Isidora_ToledoTapia.rkt")
+(require "board_21748592_Isidora_ToledoTapia.rkt")
+(require "game_21748592_Isidora_ToledoTapia.rkt")

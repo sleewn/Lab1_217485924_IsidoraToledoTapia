@@ -12,8 +12,7 @@
          get-cartas-carcel
          set-pos
          set-dinero
-         set-en-carcel
-         j1)
+         set-en-carcel)
 
 
 
@@ -148,9 +147,7 @@
 
 
 
-;Ejemplo de uso
 
-(define j1 (jugador 0 "jugador1" 1500 '() 0 #f 0))
 
 
 ;--------------------------------------------------------

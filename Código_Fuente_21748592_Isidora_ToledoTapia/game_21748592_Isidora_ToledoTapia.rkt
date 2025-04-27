@@ -157,7 +157,6 @@
          (get-maximo-hoteles partida)
          (get-estado-juego partida)))
 
-(define juego-actualizado (juego-agregar-jugador partida-capitalia j1))
 
 
 
