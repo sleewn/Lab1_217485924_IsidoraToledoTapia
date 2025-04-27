@@ -33,13 +33,12 @@
 
 ; Descripción: Selector de nombre de la propiedad
 ; Dom: propiedad
-; Rec: id
+; Rec: nombre
 ; Tipo recursión: No utiliza
 
 
 (define (get-nombre-propiedad propiedad)
   (cadr propiedad))
-
 
 ;--------------------------------------------------------
 
@@ -56,6 +55,21 @@
 
 
 (define prop1 (propiedad 1 "Paseo Mediterráneo" 60 2 #f 0 #f #f))
+
+
+
+;--------------------------------------------------------
+
+
+; Descripción: Selector de renta de la propiedad
+; Dom: propiedad
+; Rec: renta
+; Tipo recursión: No utiliza
+
+
+(define (get-precio-propiedad propiedad)
+  (cadddr propiedad))
+
 
 
 ;--------------------------------------------------------
