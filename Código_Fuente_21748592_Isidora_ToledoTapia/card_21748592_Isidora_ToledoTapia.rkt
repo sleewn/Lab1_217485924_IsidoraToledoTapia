@@ -18,6 +18,17 @@
 (define (carta id tipo descripcion accion)
   (list id tipo descripcion accion))
 
+
+;--------------------------------------------------------
+
+; Descripción: Selector de Acción de la Carta
+; Dom: Carta
+; Rec: Acción
+; Tipo recursión: No utiliza
+
+(define (get-accion carta)
+  (cadddr carta))
+
 ;--------------------------------------------------------
 
 ; Descripción: Lleva al Jugador a la Salida
@@ -65,4 +76,5 @@
 ; Tipo recursión: No utiliza
 (define (salir-carcel jugador)
   (set-en-carcel jugador #f)) ; El jugador ya no está en la cárcel
+
 
