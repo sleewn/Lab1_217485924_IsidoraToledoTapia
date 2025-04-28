@@ -1,7 +1,8 @@
 #lang racket
 
 
-(provide tablero)
+(provide tablero
+         tablero-agregar-propiedad)
 
 ;--------------------------------------------------------
 
@@ -76,6 +77,13 @@
 ; Dom: tablero (tablero) X propiedades con posición (lista de pares (propiedad . posicion))
 ; Rec: tablero
 ; Tipo recursión: No utiliza
+
+(define (tablero-agregar-propiedad tablero-juego lista-propiedades)
+  (tablero lista-propiedades (get-cartas-suerte-tablero tablero-juego)
+           (get-cartas-comunidad-tablero tablero-juego)
+           (get-casilllas-especiales tablero-juego)))
+
+
 
 
 ;(define lista-propiedades (list (cons prop1 1) (cons prop2 3) (cons prop3 6)))

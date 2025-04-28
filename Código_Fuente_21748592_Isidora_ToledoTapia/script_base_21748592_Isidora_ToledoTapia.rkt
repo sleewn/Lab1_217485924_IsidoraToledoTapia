@@ -64,7 +64,7 @@
 ;; Funcion tablero-agregar-propiedad
 (define tablero-completo (tablero-agregar-propiedad tablero-vacio lista-propiedades))
 
-
+tablero-completo
 ; 5. Creación del juego
 
 ; TDA Juego =
