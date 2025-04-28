@@ -21,9 +21,9 @@
 ; Tipo recursión: No utiliza
 
 (define (juego jugadores tablero dineroBanco numeroDados turnoActual
-               tasaImpuesto maximoCasas maximoHoteles estadoJuego)
+               tasaImpuesto maximoCasas maximoHoteles)
   (list jugadores tablero dineroBanco numeroDados turnoActual
-               tasaImpuesto maximoCasas maximoHoteles estadoJuego))
+               tasaImpuesto maximoCasas maximoHoteles))
 
 
 ;--------------------------------------------------------
@@ -119,18 +119,6 @@
   (cadr (cddddr juego)))
 
 
-;--------------------------------------------------------
- 
-; Descripción: Selector del estado del Juego
-; Dom: juego
-; Rec: estado del juego
-; Tipo recursión: No utiliza
-
-
-(define (get-estado-juego juego)
-  (caddr (cddddr juego)))
-
-
 
 ;--------------------------------------------------------
 
@@ -152,8 +140,7 @@
          (get-turno-actual partida)
          (get-tasa-impuesto partida)
          (get-maximo-casas partida)
-         (get-maximo-hoteles partida)
-         (get-estado-juego partida)))
+         (get-maximo-hoteles partida)))
 
 
 
