@@ -76,7 +76,8 @@
 ; Rec: jugador
 ; Tipo recursión: No utiliza
 (define (salir-carcel jugador)
-  (set-en-carcel jugador #f)) ; El jugador ya no está en la cárcel
+  (set-en-carcel jugador #f)
+  (set-totalCartasSalirCarcel jugador)) ; El jugador ya no está en la cárcel
 
 ;--------------------------------------------------------
 

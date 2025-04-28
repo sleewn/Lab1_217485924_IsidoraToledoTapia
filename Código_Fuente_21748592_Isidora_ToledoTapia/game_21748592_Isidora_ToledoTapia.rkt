@@ -176,3 +176,20 @@
 ;(getDadoRandom 0) ; retorna 4
 ;(getDadoRandom 3) ; retorna 5
 ;(getDadoRandom 4) ; retorna 6
+
+
+
+
+;--------------------------------------------------------
+
+; Descripción: Ejecuta el turno correspondiente del jugador
+; Dom: Game (game) X valor dados (pair/lista) X
+; comprarPropiedad_or_construirCasa(boolean #t o #f) X
+; construirHotel(boolean #t o #f) X
+; pagarMultaSalirCarcel(boolean #t o #f) X
+; usarTarjetaSalirCarcel(boolean #t o #f)
+; Rec: game
+
+; Tipo recursión: No utiliza
+
+

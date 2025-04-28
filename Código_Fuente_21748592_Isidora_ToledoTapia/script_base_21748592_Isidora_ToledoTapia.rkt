@@ -79,6 +79,7 @@
  (cons 'suerte 7)
  (cons 'suerte 12)
  (cons 'comunidad 10))))
+
 ;; casillas especiales (salida, carcel, suerte, comunidad)
 ;; posicion 0: salida
 ;; posicion 2,5: carta carcel (fn carcel)
@@ -102,8 +103,9 @@
 (define tablero-completo (tablero-agregar-propiedad tablero-vacio
 lista-propiedades))
 
-;; Con lo definido en este script el tablero con las posiciones queda de la
-;;siguiente forma
+
+;; Con lo definido en este script el tablero con las posiciones queda de la siguiente forma:
+
 ;; (posicion entidad)
 ;; (0 salida) ;; casilla especial salida, todos comienzan en 0 luego a partir
 ;; de acá se empieza a mover. Si al lanzar dados se terminan las posiciones se
@@ -142,8 +144,6 @@ lista-propiedades))
 
 
 
-
-
 ; 6. Agregar jugadores al juego
 (define g1 (juego-agregar-jugador g0 p1))
 (define g2 (juego-agregar-jugador g1 p2))
@@ -164,11 +164,21 @@ lista-propiedades))
 ;; En cada uno de sus scripts hasta el punto 6 es constante (sólo cambiará el
 ;;número de jugadores, propiedades y cartas) pero puede usar el mismo esquema.
 
+
+
+
 ; 7. Jugar (inicio de simulación)
 (display "===== CAPITALIA =====\n\n")
 ;; Ambos jugadores comienzan en posición 0
+
+
+
+
 ; Turno 1: Carlos
 (display "TURNO 1: Carlos\n")
+
+
+
 ;; (juego-jugar-turno) Se destaca en amarillo para indicar que este comando es
 ;; el que iniciará y ejecutará toda la simulación del juego. Es el único comando
 ;; que ejecutarán para la ejecución de turnos y avance del juego.

@@ -12,7 +12,8 @@
          get-cartas-carcel
          set-pos
          set-dinero
-         set-en-carcel)
+         set-en-carcel
+         set-totalCartasSalirCarcel)
 
 
 
@@ -20,7 +21,7 @@
 
 ; Descripción: Constructor Jugador
 ; Dom: id (int) X nombre (string) X dinero (int) X propiedades (list id's)
-     ;X posicionActual (int)X estaEnCarcel (boolean) XtotalCartasSalirCarcel (int)
+     ;X posicionActual (int)X estaEnCarcel (boolean) X totalCartasSalirCarcel (int)
 ; Rec: player
 ; Tipo recursión: No utiliza
 
@@ -171,6 +172,19 @@
 
 
 
+
+;--------------------------------------------------------
+
+; Descripción: Actualiza totalCartasSalirCarcel
+; Dom: jugador
+; Rec: jugador
+; Tipo recursión: No utiliza
+
+
+(define (set-totalCartasSalirCarcel jugador)
+  (jugador (get-id jugador) (get-nombre jugador) (get-dinero)
+                (get-propiedades jugador) (get-pos jugador)
+                (get-en-carcel jugador) (get-cartas-carcel jugador + 1)))
 
 ;--------------------------------------------------------
 
