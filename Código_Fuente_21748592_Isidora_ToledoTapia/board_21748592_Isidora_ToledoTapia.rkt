@@ -50,6 +50,17 @@
 
 ;--------------------------------------------------------
 
+; Descripción: Selector casilllas-especiales del Tablero
+; Dom: tablero
+; Rec: casilllas-especiales
+; Tipo recursión: No utiliza
+(define (get-casilllas-especiales t)
+  (cadddr t))
+
+
+
+;--------------------------------------------------------
+
 ; Descripción: Actualiza propiedades del Tablero
 ; Dom: tablero X nuevas-propiedades
 ; Rec: tablero
