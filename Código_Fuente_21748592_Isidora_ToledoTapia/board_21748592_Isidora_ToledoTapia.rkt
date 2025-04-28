@@ -28,6 +28,12 @@
 
 ;--------------------------------------------------------
 
+; Descripción: Selector cartas-suerte del Tablero
+; Dom: tablero
+; Rec: cartas
+; Tipo recursión: No utiliza
+(define (get-cartas-tablero t)
+  (cadr t))
 
 
 
