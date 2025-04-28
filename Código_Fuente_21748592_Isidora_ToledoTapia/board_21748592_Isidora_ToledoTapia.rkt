@@ -1,7 +1,7 @@
 #lang racket
 
 
-(provide tablero-juego)
+(provide tablero)
 
 ;--------------------------------------------------------
 
@@ -15,7 +15,23 @@
 (define (tablero propiedades cartas-suerte cartas-comunidad casilllas-especiales)
   (list propiedades cartas-suerte cartas-comunidad casilllas-especiales))
 
-(define tablero-juego (tablero '() '() '() '()))
+;--------------------------------------------------------
+
+
+; Descripción: Selector propiedades del Tablero
+; Dom: tablero
+; Rec: propiedades
+; Tipo recursión: No utiliza
+(define (get-propiedades-tablero t)
+  (car t))
+
+
+;--------------------------------------------------------
+
+
+
+
+
 
 
 
@@ -27,7 +43,7 @@
 ; Tipo recursión: No utiliza
 
 (define (set-propiedades-tablero tablero nuevas-propiedades)
-  (tablero (car tablero)(cadr tablero)nuevas-propiedades(cadddr tablero 3)))
+  (tablero (car tablero)(cadr tablero)nuevas-propiedades(cadddr tablero)))
 
 ;--------------------------------------------------------
 

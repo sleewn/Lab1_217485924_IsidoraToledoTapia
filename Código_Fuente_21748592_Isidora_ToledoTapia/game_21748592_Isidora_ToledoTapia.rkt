@@ -4,8 +4,10 @@
 (require "board_21748592_Isidora_ToledoTapia.rkt")
 (require "player_21748592_Isidora_ToledoTapia.rkt")
 
-(provide get-maximo-casas
-         get-maximo-hoteles)
+(provide juego
+         get-maximo-casas
+         get-maximo-hoteles
+         juego-agregar-jugador)
          
 
 
@@ -129,10 +131,6 @@
   (caddr (cddddr juego)))
 
 
-; Ejemplo de uso:
-
-(define partida-capitalia (juego '() tablero-juego 20000 2 0 10 4
-1 "preparacion"))
 
 ;--------------------------------------------------------
 
