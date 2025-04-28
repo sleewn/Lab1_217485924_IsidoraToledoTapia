@@ -30,14 +30,21 @@
 
 ; Descripción: Selector cartas-suerte del Tablero
 ; Dom: tablero
-; Rec: cartas
+; Rec: cartas-suerte
 ; Tipo recursión: No utiliza
-(define (get-cartas-tablero t)
+(define (get-cartas-suerte-tablero t)
   (cadr t))
 
 
 
+;--------------------------------------------------------
 
+; Descripción: Selector cartas-comunidad del Tablero
+; Dom: tablero
+; Rec: cartas-comunidad
+; Tipo recursión: No utiliza
+(define (get-cartas-comunidad-tablero t)
+  (caddr t))
 
 
 
