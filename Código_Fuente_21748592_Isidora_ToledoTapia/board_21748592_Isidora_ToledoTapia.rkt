@@ -66,8 +66,9 @@
 ; Rec: tablero
 ; Tipo recursión: No utiliza
 
-(define (set-propiedades-tablero tablero nuevas-propiedades)
-  (tablero (car tablero)(cadr tablero)nuevas-propiedades(cadddr tablero)))
+(define (set-propiedades-tablero t nuevas-propiedades)
+  (tablero (get-propiedades-tablero t)(get-cartas-suerte-tablero t)
+           nuevas-propiedades(get-casilllas-especiales t)))
 
 ;--------------------------------------------------------
 
