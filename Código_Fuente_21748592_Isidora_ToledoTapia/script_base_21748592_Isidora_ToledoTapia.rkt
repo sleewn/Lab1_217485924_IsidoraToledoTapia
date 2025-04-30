@@ -130,7 +130,6 @@ lista-propiedades))
 
 
 
-
 ; 5. Creación del juego
 ; Dominio TDA Juego = jugadores X tablero X dineroBanco X numeroDados X
 ;; turnoActual (id jugador actual) X tasaImpuesto X maxCasas X maxHoteles
@@ -139,6 +138,11 @@ lista-propiedades))
 ;;ejemplificaba con "en preparación" Sin embargo esto no tenía utilidad para el
 ;;presente laboratorio por lo que se eliminó. Si usted lo implementa no hay
 ;;problema pero tenga presente que no se utilizará en nada para este enunciado.
+
+
+
+
+(juego-extraer-carta tablero-completo "suerte")
 
 (define g0 (juego '() tablero-completo 20000 2 0 10 4 1))
 
@@ -194,7 +198,7 @@ lista-propiedades))
 ;(define g3 (juego-jugar-turno g2 (lanzar-dados 3 4) #t #f #f #f))
 ;g3 ;; esto imprime g3 para que lo podamos evaluar.
 
-(lanzar-dados 3 4)
+
 
 ;; Explicación:
 ;; Al usar la semilla 3 y 4 para dado1 y dado2, jugador Carlos se va a mover a

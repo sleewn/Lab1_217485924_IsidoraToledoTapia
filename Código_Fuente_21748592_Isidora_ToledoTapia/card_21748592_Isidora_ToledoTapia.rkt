@@ -2,12 +2,14 @@
 
 
 (require "player_21748592_Isidora_ToledoTapia.rkt")
+(require "board_21748592_Isidora_ToledoTapia.rkt")
 
 (provide carta
          ir-a-salida
          ir-a-carcel
          pagar-impuesto
-         ejecutar-accion)
+         ejecutar-accion
+         juego-extraer-carta)
 
 ;--------------------------------------------------------
 
@@ -91,3 +93,14 @@
     [(eq? (get-accion carta) 'salir-carcel) (salir-carcel jugador)]
     [(eq? (get-accion carta) 'banco-paga) (banco-paga jugador)]))
 
+
+
+(define (juego-extraer-carta t tipoMazo)
+  ;; Obtener el mazo correspondiente
+  (define mazo (cond
+                [(eq? tipoMazo "suerte") (get-cartas-suerte-tablero t)]
+                [(eq? tipoMazo "comunidad") (get-cartas-comunidad-tablero t)]))
+  
+  ;; Extraer una carta aleatoria del mazo
+  (define indice (random 1 4))  ;; Genera un índice aleatorio
+  (list-ref mazo indice))                  ;; Retornar la carta en ese índice

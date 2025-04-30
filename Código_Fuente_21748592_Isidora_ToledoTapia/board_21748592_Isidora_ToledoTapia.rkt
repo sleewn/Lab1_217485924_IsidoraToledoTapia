@@ -2,7 +2,9 @@
 
 
 (provide tablero
-         tablero-agregar-propiedad)
+         tablero-agregar-propiedad
+         get-cartas-suerte-tablero
+         get-cartas-comunidad-tablero)
 
 ;--------------------------------------------------------
 
