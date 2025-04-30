@@ -8,7 +8,8 @@
          get-maximo-casas
          get-maximo-hoteles
          juego-agregar-jugador
-         lanzar-dados)
+         lanzar-dados
+         get-maximo-casas)
          
 
 

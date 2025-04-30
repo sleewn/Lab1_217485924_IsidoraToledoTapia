@@ -229,7 +229,7 @@
      (get-precio-propiedad propiedad)] ; Sin construcciones queda igual
     [(get-esHotel-propiedad propiedad)
      (* 2 (* (get-precio-propiedad propiedad)
-             (+ 1 (* 0.2 (get-casas-propiedad propiedad)))))] ; Con hotel
+             (+ 1 (* 0.2 (get-maximo-casas)))))] ; Con hotel
     [else
      (* (get-precio-propiedad propiedad)
         (+ 1 (* 0.2 (get-casas-propiedad propiedad))))])) ; Por cada casa construida aumenta 20% el precio

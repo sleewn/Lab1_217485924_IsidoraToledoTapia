@@ -214,3 +214,13 @@
 (define (jugador-esta-en-bancarrota jugador)
   (<= (get-dinero jugador) 0))
 
+
+;--------------------------------------------------------
+
+
+; Descripción: Función para calcular la renta de una propiedad.
+; Dom: player (jugador) X game (TDA Juego)
+; Rec: monto (int)
+; Tipo recursión: No utiliza
+
+
