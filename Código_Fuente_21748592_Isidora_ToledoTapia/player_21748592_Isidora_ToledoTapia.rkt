@@ -184,7 +184,10 @@
 (define (set-totalCartasSalirCarcel jugador)
   (jugador (get-id jugador) (get-nombre jugador) (get-dinero)
                 (get-propiedades jugador) (get-pos jugador)
-                (get-en-carcel jugador) (get-cartas-carcel jugador + 1)))
+                (get-en-carcel jugador) (+ (get-cartas-carcel jugador) 1)))
+
+
+
 
 ;--------------------------------------------------------
 

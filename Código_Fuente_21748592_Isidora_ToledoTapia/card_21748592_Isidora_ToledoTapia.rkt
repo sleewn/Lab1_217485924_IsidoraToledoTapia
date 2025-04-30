@@ -71,7 +71,7 @@
 
 ;--------------------------------------------------------
 
-; Descripción: El jugador sale de la cárcel gratis
+; Descripción: El jugador sale de la cárcel gratis **********
 ; Dom: jugador
 ; Rec: jugador
 ; Tipo recursión: No utiliza
@@ -87,7 +87,7 @@
     [(eq? (get-accion carta) 'ir-a-salida) (ir-a-salida jugador)]
     [(eq? (get-accion carta) 'ir-a-carcel) (ir-a-carcel jugador)]
     [(eq? (get-accion carta) 'pagar-impuesto) (pagar-impuesto jugador)]
-    ;[(eq? (get-accion carta) 'cumpleanos) (cumpleanos jugador)]
+    ;[(eq? (get-accion carta) 'cumpleanos) (cumpleanos jugador)] **********
     [(eq? (get-accion carta) 'salir-carcel) (salir-carcel jugador)]
     [(eq? (get-accion carta) 'banco-paga) (banco-paga jugador)]))
 

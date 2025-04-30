@@ -1,32 +1,49 @@
-RF1 - TDAs:
 
-RF2 - TDA Jugador - constructor:
 
-RF3 - TDA Propiedad - constructor:
+RF1 - TDAs: 1
 
-RF4 - TDA Carta - constructor:
 
-RF5 - TDA Tablero - constructor:
+RF2 - TDA Jugador - constructor: 1
 
-RF6 - TDA Juego - constructor:
 
-RF7 - TDA Tablero - modificador - Agregar propiedad:
+RF3 - TDA Propiedad - constructor: 1
 
-RF8 - TDA Juego - modificador - Agregar jugador:
 
-RF9 - TDA Juego - selector - obtener jugador actual:
+RF4 - TDA Carta - constructor: 1
 
-RF10 - TDA juego - otros - lanzar dados:
+
+RF5 - TDA Tablero - constructor: 1
+
+
+RF6 - TDA Juego - constructor: 1
+
+
+RF7 - TDA Tablero - modificador - Agregar propiedad: 1
+
+
+RF8 - TDA Juego - modificador - Agregar jugador: 1
+
+
+RF9 - TDA Juego - selector - obtener jugador actual: 
+
+
+RF10 - TDA juego - otros - lanzar dados: 
+
 
 RF11 - TDA Jugador - modificador - Mover Jugador:
 
+
 RF12 - TDA Jugador - modificador - Comprar propiedad:
+
 
 RF13 - TDA Jugador - otros - Calcular Renta:
 
+
 RF14 - TDA Propiedad - otros - Calcular Renta:
 
+
 RF15 - TDA Propiedad- modificador -Construir Casa:
+
 
 RF16 - TDA Propiedad- modificador -Construir Hotel:
 

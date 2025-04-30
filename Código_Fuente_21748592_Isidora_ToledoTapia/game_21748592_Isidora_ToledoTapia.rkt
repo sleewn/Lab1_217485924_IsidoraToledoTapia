@@ -7,7 +7,8 @@
 (provide juego
          get-maximo-casas
          get-maximo-hoteles
-         juego-agregar-jugador)
+         juego-agregar-jugador
+         lanzar-dados)
          
 
 
@@ -160,14 +161,17 @@
   (list-ref (get-jugadores juego) (get-turno-actual juego)))
 
 
-
+;--------------------------------------------------------
 
 ; Funcion myRandom
-;(define (myRandom Xn)
-;(modulo (+ (* 1103515245 Xn) 12345) 2147483648))
+
+(define (myRandom Xn)
+(modulo (+ (* 1103515245 Xn) 12345) 2147483648))
 
 ; Funcion getDadoRandom que recibe la semilla y controla los resultados
-;(define (getDadoRandom seed)(+ 1 (modulo (myRandom seed) 6)))
+
+(define (getDadoRandom seed)
+  (+ 1 (modulo (myRandom seed) 6)))
 
 ;; Valores de referencia seed para retornar entre 1 a 6
 ;(getDadoRandom 1) ; retorna 1
@@ -178,18 +182,18 @@
 ;(getDadoRandom 4) ; retorna 6
 
 
-
-
 ;--------------------------------------------------------
 
-; Descripción: Ejecuta el turno correspondiente del jugador
-; Dom: Game (game) X valor dados (pair/lista) X
-; comprarPropiedad_or_construirCasa(boolean #t o #f) X
-; construirHotel(boolean #t o #f) X
-; pagarMultaSalirCarcel(boolean #t o #f) X
-; usarTarjetaSalirCarcel(boolean #t o #f)
-; Rec: game
-
+; Descripción: Función para simular el lanzamiento de 2 dados. El resultado
+             ;de ambos dados es aleatorio (entre 1 y 6) y la función retorna
+             ;el par (valordado1 valordado2)
+; Dom: seed-dado1 (number) X seed-dado2 (number)
+; Rec: (valordado1 valordado2)
 ; Tipo recursión: No utiliza
+
+(define (lanzar-dados semilla1 semilla2)
+  (display (list "Dado 1:" (getDadoRandom semilla1)))
+  (display (list "Dado 2:" (getDadoRandom semilla2)))
+  (list (getDadoRandom semilla1) (getDadoRandom semilla2)))
 
 

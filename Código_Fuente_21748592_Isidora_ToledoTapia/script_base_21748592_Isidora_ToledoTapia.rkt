@@ -194,21 +194,25 @@ lista-propiedades))
 ;(define g3 (juego-jugar-turno g2 (lanzar-dados 3 4) #t #f #f #f))
 ;g3 ;; esto imprime g3 para que lo podamos evaluar.
 
-
+(lanzar-dados 3 4)
 
 ;; Explicación:
 ;; Al usar la semilla 3 y 4 para dado1 y dado2, jugador Carlos se va a mover a
 ;; posición 3 (0 + dado1:1 + dado2: 2)
+
 ;; En tablero posición 3 prop2: Avenida Báltica Precio 600
 ;; (define prop2 (propiedad 2 "Avenida Báltica" 600 4 #f 0 #f #f))
+
 ;; Los últimos dos valores de juego-jugar-turno son para simplificar la
 ;; simulación del juego
+
 ;; comprarPropiedad_or_construyeCasa:: #t para controlar la simulación se
 ;;indica que se construya una casa si es que puede (si cae en una de sus
 ;; propiedades y se dan las condiciones para que pueda construir 1 casa entonces
 ;; se realiza, en caso de no cumplir las condiciones y el valor sea #t entonces
 ;; se ignora la construcción de la casa. Internamente ustedes deben llamar a la
 ;; función correspondiente dentro de (juego-jugar-turno)
+
 ;; construyeHotel: #f para controlar la simulación se agrega este campo para
 ;; que construya un hotel en caso de que se cumplan las condiciones, al igual que
 ;; el parametro de construyeCasa.
@@ -221,7 +225,7 @@ lista-propiedades))
 
 ; Turno 2: Ana
 ;; Semilla 2 y 5 da: (dado1:2 dado2:3), jugador Ana se va a mover a posición
-;;5, dado que se mueve de posición a 5 (2+3)
+;; 5, dado que se mueve de posición a 5 (2+3)
 ;; En tablero: posición (5 cárcel) La posición 5 es cárcel por lo que pierde
 ;; el turno
   
