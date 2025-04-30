@@ -142,7 +142,6 @@ lista-propiedades))
 
 
 
-(juego-extraer-carta tablero-completo "suerte")
 
 (define g0 (juego '() tablero-completo 20000 2 0 10 4 1))
 

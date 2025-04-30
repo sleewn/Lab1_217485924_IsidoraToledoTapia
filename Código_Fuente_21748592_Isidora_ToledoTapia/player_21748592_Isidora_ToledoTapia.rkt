@@ -196,3 +196,21 @@
 ; Rec: int (monto de la renta)
 ; Tipo recursión: No utiliza
 
+
+
+
+
+
+;--------------------------------------------------------
+
+; Descripción: Función para verificar
+             ;si un jugador se encuentra en bancarrota (sin dinero)
+
+; Dom: jugador (jugador)
+; Rec: boolean (#t si está en bancarrota, #f si no)
+; Tipo recursión: No utiliza
+
+
+(define (jugador-esta-en-bancarrota jugador)
+  (<= (get-dinero jugador) 0))
+
