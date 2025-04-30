@@ -213,8 +213,24 @@
              (get-esHotel-propiedad p) #t)))
              
 
+;--------------------------------------------------------
 
 
+; Descripción: Función para calcular la renta de una propiedad.
+; Dom: propiedad (propiedad)
+; Rec: monto (int)
+; Tipo recursión: No utiliza
 
 
+(define (propiedad-calcular-renta propiedad)
+  (cond
+    [(get-estaHipotecada-propiedad propiedad) 0] ; Propiedad hipotecada
+    [(and (= (get-casas-propiedad propiedad) 0) (not (get-esHotel-propiedad propiedad)))
+     (get-precio-propiedad propiedad)] ; Sin construcciones queda igual
+    [(get-esHotel-propiedad propiedad)
+     (* 2 (* (get-precio-propiedad propiedad)
+             (+ 1 (* 0.2 (get-casas-propiedad propiedad)))))] ; Con hotel
+    [else
+     (* (get-precio-propiedad propiedad)
+        (+ 1 (* 0.2 (get-casas-propiedad propiedad))))])) ; Por cada casa construida aumenta 20% el precio
 

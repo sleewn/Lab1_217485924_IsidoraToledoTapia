@@ -24,13 +24,13 @@ RF7 - TDA Tablero - modificador - Agregar propiedad: 1
 RF8 - TDA Juego - modificador - Agregar jugador: 1
 
 
-RF9 - TDA Juego - selector - obtener jugador actual: 1*
+RF9 - TDA Juego - selector - obtener jugador actual: 1
 
 
 RF10 - TDA juego - otros - lanzar dados: 1
 
 
-RF11 - TDA Jugador - modificador - Mover Jugador: 0
+RF11 - TDA Jugador - modificador - Mover Jugador: 0 ***
 
 
 RF12 - TDA Jugador - modificador - Comprar propiedad: 1
@@ -54,10 +54,10 @@ RF17 - TDA Jugador - otros - Pagar Renta: 0
 RF18 - TDA Propiedad - modificador - Hipotecar Propiedad: 1
 
 
-RF19 - TDA Juego - modificador -Extraer carta: 0
+RF19 - TDA Juego - modificador - Extraer carta: 0
 
 
-RF20 - TDA Jugador - otros - Verificar bancarrota: 0
+RF20 - TDA Jugador - otros - Verificar bancarrota: 1
 
 
  RF21 - TDA Juego - modificador - Realizar turno: Tengo que hacer todo lo demás primero
