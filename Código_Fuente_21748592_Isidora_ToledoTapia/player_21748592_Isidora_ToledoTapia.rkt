@@ -128,10 +128,10 @@
 ; Rec: jugador
 ; Tipo recursión: No utiliza
 
-(define (set-dinero jugador nuevo-dinero)
-  (jugador (get-id jugador) (get-nombre jugador) nuevo-dinero
-                (get-propiedades jugador) (get-pos jugador)
-                (get-en-carcel jugador) (get-cartas-carcel jugador)))
+(define (set-dinero j nuevo-dinero)
+  (jugador (get-id j) (get-nombre j) nuevo-dinero
+           (get-propiedades j) (get-pos j)
+           (get-en-carcel j) (get-cartas-carcel j)))
 
 ;--------------------------------------------------------
 
@@ -222,5 +222,36 @@
 ; Dom: player (jugador) X game (TDA Juego)
 ; Rec: monto (int)
 ; Tipo recursión: No utiliza
+; Hay que evitar requerimientos circulares, no puedo llamar a game
+
+
+
+
+;--------------------------------------------------------
+
+
+; Descripción: Función para mover al jugador en el tablero
+; Dom: jugador (jugador) X valoresDados (par o lista) X juego (juego)
+; Rec: player
+; Tipo recursión: No utiliza
+
+
+(define (jugador-mover jugador valoresDados juego)
+  (set-pos jugador (modulo (+ (get-pos jugador) (+ (car valoresDados) (cadr valoresDados))) 15))) ; casillas del juego
+
+
+
+;--------------------------------------------------------
+
+
+; Descripción: Función para que un jugador pague renta a otro
+; Dom: jugador-pagador (jugador) X jugador-receptor (jugador) X monto (int)
+; Rec: Lista jugadores actualizados
+; Tipo recursión: No utiliza
+
+
+(define (jugador-pagar-renta jugador-que-paga jugador-que-recibe monto)
+  (list (set-dinero jugador-que-paga (- (get-dinero jugador-que-paga) monto))
+   (set-dinero jugador-que-recibe (+ (get-dinero jugador-que-recibe) monto))))
 
 

@@ -207,11 +207,15 @@
 
 
 (define (propiedad-hipotecar p)
-  (propiedad ((get-id-propiedad p) (get-nombre-propiedad p)
-             (get-precio-propiedad p) (get-renta-propiedad p)
-             (get-dueño-propiedad p) (get-casas-propiedad p)
-             (get-esHotel-propiedad p) #t)))
-             
+  (propiedad (get-id-propiedad p)
+             (get-nombre-propiedad p)
+             (get-precio-propiedad p)
+             (get-renta-propiedad p)
+             (get-dueño-propiedad p)
+             (get-casas-propiedad p)
+             (get-esHotel-propiedad p)
+             #t))
+
 
 ;--------------------------------------------------------
 

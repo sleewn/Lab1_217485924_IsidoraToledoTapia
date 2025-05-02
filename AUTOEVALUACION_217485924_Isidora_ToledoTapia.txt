@@ -39,7 +39,7 @@ RF12 - TDA Jugador - modificador - Comprar propiedad: 1
 RF13 - TDA Jugador - otros - Calcular Renta: 0
 
 
-RF14 - TDA Propiedad - otros - Calcular Renta: 0
+RF14 - TDA Propiedad - otros - Calcular Renta: 1
 
 
 RF15 - TDA Propiedad- modificador -Construir Casa: 1

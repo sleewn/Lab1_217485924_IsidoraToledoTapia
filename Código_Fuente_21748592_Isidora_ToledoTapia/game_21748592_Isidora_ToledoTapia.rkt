@@ -130,7 +130,7 @@
 ; Tipo recursión: No utiliza
 
 (define (juego-agregar-jugador partida player)
-  (juego (cons (jugador (get-id player) (get-nombre player) 1500
+  (juego (cons (jugador (get-id player) (get-nombre player) (get-dinero jugador)
                (get-propiedades player) (get-pos player) (get-en-carcel player)
                (get-cartas-carcel player))
                
