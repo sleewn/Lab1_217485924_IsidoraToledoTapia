@@ -1,0 +1,91 @@
+#lang racket
+
+
+(require "player_21748592_Isidora_ToledoTapia.rkt")
+(require "property_21748592_Isidora_ToledoTapia.rkt")
+(require "card_21748592_Isidora_ToledoTapia.rkt")
+(require "board_21748592_Isidora_ToledoTapia.rkt")
+(require "game_21748592_Isidora_ToledoTapia.rkt")
+
+
+
+
+
+
+;------------------------------------------ SCRIPT 1 - Capitalia Básico
+
+; 1. Jugadores
+(define p1 (jugador 1 "Carlos" 1500 '() 0 #f 0))
+(define p2 (jugador 2 "Ana" 1500 '() 0 #f 0))
+
+; 2. Propiedades (mínimo 15)
+(define prop1 (propiedad 1 "Paseo Mediterráneo" 60 2 #f 0 #f #f))
+(define prop2 (propiedad 2 "Avenida Báltica" 60 4 #f 0 #f #f))
+(define prop3 (propiedad 3 "Ferrocarril Reading" 200 25 #f 0 #f #f))
+(define prop4 (propiedad 4 "Avenida Oriental" 100 6 #f 0 #f #f))
+(define prop5 (propiedad 5 "Avenida Vermont" 100 6 #f 0 #f #f))
+(define prop6 (propiedad 6 "Avenida Connecticut" 120 8 #f 0 #f #f))
+(define prop7 (propiedad 7 "Plaza San Carlos" 140 10 #f 0 #f #f))
+(define prop8 (propiedad 8 "Avenida St. James" 180 14 #f 0 #f #f))
+(define prop9 (propiedad 9 "Avenida Tennessee" 180 14 #f 0 #f #f))
+(define prop10 (propiedad 10 "Avenida Nueva York" 200 16 #f 0 #f #f))
+(define prop11 (propiedad 11 "Ferrocarril Pennsylvania" 200 25 #f 0 #f #f))
+(define prop12 (propiedad 12 "Avenida Kentucky" 220 18 #f 0 #f #f))
+(define prop13 (propiedad 13 "Avenida Indiana" 220 18 #f 0 #f #f))
+(define prop14 (propiedad 14 "Avenida Illinois" 240 20 #f 0 #f #f))
+(define prop15 (propiedad 15 "Avenida Ventnor" 260 22 #f 0 #f #f))
+
+; 3. Cartas de suerte (10)
+(define chance1 (carta 1 "suerte" "Avance a salida" 'ir-a-salida))
+(define chance2 (carta 2 "suerte" "Vaya a la cárcel" 'ir-a-carcel))
+(define chance3 (carta 3 "suerte" "El banco le paga $50" 'banco-paga))
+(define chance4 (carta 4 "suerte" "Salga de la cárcel gratis" 'salir-carcel))
+(define chance5 (carta 5 "suerte" "Pague impuestos por $100" 'pagar-impuesto))
+(define chance6 (carta 6 "suerte" "Pase por salida y cobre $200" 'ir-a-salida))
+(define chance7 (carta 7 "suerte" "Vaya a Avenida St. James" 'ir-a-salida))
+(define chance8 (carta 8 "suerte" "Pague $15 de multa" 'pagar-impuesto))
+(define chance9 (carta 9 "suerte" "Reciba $25 del banco" 'banco-paga))
+(define chance10 (carta 10 "suerte" "Reciba $100 del banco" 'banco-paga))
+
+; 4. Cartas de comunidad (10)
+(define community1 (carta 11 "comunidad" "Pague $50 por servicios médicos" 'pagar-impuesto))
+(define community2 (carta 12 "comunidad" "Reciba $100 del banco" 'banco-paga))
+(define community3 (carta 13 "comunidad" "Salga de la cárcel gratis" 'salir-carcel))
+(define community4 (carta 14 "comunidad" "Es su cumpleaños, reciba $10 de cada jugador" 'cumpleanos))
+(define community5 (carta 15 "comunidad" "Pague $100 por reparación de casa" 'pagar-impuesto))
+(define community6 (carta 16 "comunidad" "Reciba $50 por servicios" 'banco-paga))
+(define community7 (carta 17 "comunidad" "Pague $20 por multa" 'pagar-impuesto))
+(define community8 (carta 18 "comunidad" "Reciba $25 del banco" 'banco-paga))
+(define community9 (carta 19 "comunidad" "Pague $10 por impuestos" 'pagar-impuesto))
+(define community10 (carta 20 "comunidad" "Reciba $75 del banco" 'banco-paga))
+
+; 5. Crear tablero vacío y agregar propiedades
+(define tablero-vacio
+  (tablero '()
+           (list chance1 chance2 chance3 chance4 chance5 chance6 chance7 chance8 chance9 chance10)
+           (list community1 community2 community3 community4 community5 community6 community7 community8 community9 community10)
+           (list (cons 'salida 0)
+                 (cons 'carcel 5)
+                 (cons 'suerte 2)
+                 (cons 'comunidad 3)
+                 (cons 'suerte 8)
+                 (cons 'comunidad 10))))
+
+(define lista-propiedades
+  (list (cons prop1 1) (cons prop2 3) (cons prop3 6) (cons prop4 8)
+        (cons prop5 9) (cons prop6 11) (cons prop7 13) (cons prop8 14)
+        (cons prop9 16) (cons prop10 17) (cons prop11 19) (cons prop12 21)
+        (cons prop13 23) (cons prop14 24) (cons prop15 25)))
+
+(define tablero-completo
+  (tablero-agregar-propiedad tablero-vacio lista-propiedades))
+
+; 6. Crear juego y agregar jugadores
+(define g0 (juego '() tablero-completo 20000 2 0 10 4 1))
+(define g1 (juego-agregar-jugador g0 p1))
+(define g2 (juego-agregar-jugador g1 p2))
+
+; 7. Simulación de un turno
+(display "===== CAPITALIA - SCRIPT 1 =====\n\n")
+(display "TURNO 1: Carlos\n")
+(define g3 (juego-jugar-turno g2 (juego-lanzar-dados 1 2) #t #f #f #f))

@@ -1,0 +1,93 @@
+#lang racket
+
+
+
+(require "player_21748592_Isidora_ToledoTapia.rkt")
+(require "property_21748592_Isidora_ToledoTapia.rkt")
+(require "card_21748592_Isidora_ToledoTapia.rkt")
+(require "board_21748592_Isidora_ToledoTapia.rkt")
+(require "game_21748592_Isidora_ToledoTapia.rkt")
+
+
+; 1. Jugadores
+(define p1 (jugador 1 "Rafita" 1500 '() 0 #f 0))
+(define p2 (jugador 2 "Luna" 1500 '() 0 #f 0))
+
+; 2. Propiedades
+(define prop1  (propiedad 1  "Nivel 1-1 (Mario)" 500 3 #f 0 #f #f))
+(define prop2  (propiedad 2  "Mazmorra Zelda" 700 4 #f 0 #f #f))
+(define prop3  (propiedad 3  "Donkey Kong City" 800 5 #f 0 #f #f))
+(define prop4  (propiedad 4  "Pac-Man Maze" 600 3 #f 0 #f #f))
+(define prop5  (propiedad 5  "Tetris Tower" 750 4 #f 0 #f #f))
+(define prop6  (propiedad 6  "Pista Rainbow (Mario Kart)" 1000 6 #f 0 #f #f))
+(define prop7  (propiedad 7  "Castillo Bowser" 1200 8 #f 0 #f #f))
+(define prop8  (propiedad 8  "Metroid Base" 900 5 #f 0 #f #f))
+(define prop9  (propiedad 9  "Green Hill Zone" 1000 6 #f 0 #f #f))
+(define prop10 (propiedad 10 "Área 51 (Space Invaders)" 850 5 #f 0 #f #f))
+(define prop11 (propiedad 11 "Monkey Mines (DKC)" 950 6 #f 0 #f #f))
+(define prop12 (propiedad 12 "Yoshi’s Island" 1100 7 #f 0 #f #f))
+(define prop13 (propiedad 13 "Hyrule Castle" 1300 9 #f 0 #f #f))
+(define prop14 (propiedad 14 "Pueblo Paleta" 1000 6 #f 0 #f #f))
+(define prop15 (propiedad 15 "Final Boss Arena" 1500 10 #f 0 #f #f))
+
+; 3. Cartas Suerte
+(define suerte1  (carta 1 "suerte" "¡Power-Up! Avanza 3 casillas" 'power-up))
+(define suerte2  (carta 2 "suerte" "Cae en un hoyo, retrocede 2 casillas" 'hoyo))
+(define suerte3  (carta 3 "suerte" "¡1UP! Recibe $200" 'vida-extra))
+(define suerte4  (carta 4 "suerte" "Pierdes una vida, paga $150" 'vida-perdida))
+(define suerte5  (carta 5 "suerte" "Avanza a Yoshi’s Island" 'ir-a-yoshi))
+(define suerte6  (carta 6 "suerte" "Atajo secreto, ve a la salida" 'atajo))
+(define suerte7  (carta 7 "suerte" "Game Over, directo a la cárcel" 'game-over))
+(define suerte8  (carta 8 "suerte" "Truco activado, no pagas renta este turno" 'truco))
+(define suerte9  (carta 9 "suerte" "Encuentras monedas ocultas, gana $100" 'monedas))
+(define suerte10 (carta 10 "suerte" "Pulsa un botón equivocado, pierde un turno" 'boton-equivocado))
+
+; 4. Cartas Comunidad
+(define comunidad1  (carta 11 "comunidad" "Tu cartucho se traba, retrocede 4 casillas" 'error-cartucho))
+(define comunidad2  (carta 12 "comunidad" "Recibes un Game Genie, gana $150" 'game-genie))
+(define comunidad3  (carta 13 "comunidad" "Pierdes el control, paga $50" 'perder-control))
+(define comunidad4  (carta 14 "comunidad" "Encuentras una consola nueva, recibe $100" 'nueva-consola))
+(define comunidad5  (carta 15 "comunidad" "Pantalla azul, ve a la cárcel" 'pantalla-azul))
+(define comunidad6  (carta 16 "comunidad" "Batería baja, pierdes turno" 'bateria))
+(define comunidad7  (carta 17 "comunidad" "Mini-juego: Gana $75" 'mini-juego))
+(define comunidad8  (carta 18 "comunidad" "Te hackean la partida, paga $80" 'hackeo))
+(define comunidad9  (carta 19 "comunidad" "Sal de la cárcel gratis" 'salir-carcel))
+(define comunidad10 (carta 20 "comunidad" "Tu rival pierde $100 y tú lo ganas" 'rival-perdida))
+
+; 5. Tablero
+(define tablero-vacio
+  (tablero '()
+    (list suerte1 suerte2 suerte3 suerte4 suerte5 suerte6 suerte7 suerte8 suerte9 suerte10)
+    (list comunidad1 comunidad2 comunidad3 comunidad4 comunidad5 comunidad6 comunidad7 comunidad8 comunidad9 comunidad10)
+    (list
+      (cons 'salida 0)
+      (cons 'carcel 6)
+      (cons 'suerte 5)
+      (cons 'suerte 13)
+      (cons 'comunidad 4)
+      (cons 'comunidad 9)
+    )
+  )
+)
+
+(define lista-propiedades
+  (list 
+    (cons prop1 1) (cons prop2 2) (cons prop3 3) (cons prop4 7)
+    (cons prop5 8) (cons prop6 10) (cons prop7 11) (cons prop8 12)
+    (cons prop9 14) (cons prop10 15) (cons prop11 16) (cons prop12 17)
+    (cons prop13 18) (cons prop14 19) (cons prop15 20)))
+
+(define tablero-completo (tablero-agregar-propiedad tablero-vacio lista-propiedades))
+
+; 6. Crear juego
+(define g0 (juego '() tablero-completo 20000 2 0 10 4 1))
+
+; 7. Agregar jugadores
+(define g1 (juego-agregar-jugador g0 p1))
+(define g2 (juego-agregar-jugador g1 p2))
+
+; 8. Jugar
+(display "===== CAPITALIA =====\n\n")
+(display "TURNO 1: Rafita\n")
+(define g3 (juego-jugar-turno g2 (juego-lanzar-dados 4 2) #t #f #f #f))
+g3

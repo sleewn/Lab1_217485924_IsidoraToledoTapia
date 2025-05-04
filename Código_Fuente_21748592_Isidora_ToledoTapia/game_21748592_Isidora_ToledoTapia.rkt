@@ -346,7 +346,7 @@
   ;; Mover al jugador según los dados
   (define jugador-movido
     (jugador-mover (juego-obtener-jugador-actual game) dados game))
-
+  
              
 
   ;; Actualizar juego con el jugador movido
@@ -355,10 +355,10 @@
   
   ;; Obtener la posición del jugador movido
   (define pos (get-pos jugador-movido))
-
+  
   ;; Buscar la propiedad en la nueva posición
   (define propiedad-en-pos (buscar-propiedad-en-tablero (get-propiedades-tablero (get-tablero game-movido)) pos))
-             
+
   ;; Comprar propiedad si corresponde
   (define game-comprado
     (if (and comprarPropiedad (not (null? propiedad-en-pos)))
@@ -366,7 +366,9 @@
          game-movido
          (jugador-comprar-propiedad jugador-movido (cdr propiedad-en-pos)))
         game-movido))
-
+  
+  
+  
   ;; Pagar multa si corresponde
   (define game-multa
     (if pagarMultaSalirCarcel

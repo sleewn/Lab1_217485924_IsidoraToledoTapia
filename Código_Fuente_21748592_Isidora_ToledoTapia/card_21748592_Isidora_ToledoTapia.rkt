@@ -106,11 +106,13 @@
 ; Tipo recursión: No utiliza
 
 (define (juego-extraer-carta t tipoMazo)
-  ;; Obtener el mazo correspondiente
-  (define mazo (cond
-                [(eq? tipoMazo "suerte") (get-cartas-suerte-tablero t)]
-                [(eq? tipoMazo "comunidad") (get-cartas-comunidad-tablero t)]))
+  (define mazo-suerte (get-cartas-suerte-tablero t))
+  (define mazo-comunidad (get-cartas-comunidad-tablero t))
   
-  ;; Extraer una carta aleatoria del mazo (no funciona)
-  (define indice (random (length mazo))) ;; Genera un índice aleatorio
-  (list-ref mazo indice)) ;; Retornar la carta en ese índice
+  (define mazo
+    (if (eq? tipoMazo 'suerte)
+        mazo-suerte
+        mazo-comunidad))
+  
+  (define indice (random (length mazo)))
+  (list-ref mazo indice))

@@ -54,24 +54,12 @@ a3
 (propiedad-calcular-renta prop1)
 
 
-; 3. Creación de cartas de suerte y arca comunal
-
-; TDA Carta = id X tipo X descripcion X accion
-
 (define chance1 (carta 1 "suerte" "Avance hasta la casilla de salida" 'ir-a-salida))
 (define chance2 (carta 2 "suerte" "Vaya a la cárcel" 'ir-a-carcel))
 (define chance3 (carta 3 "suerte" "El banco le paga $50" 'banco-paga))
 (define community1 (carta 4 "comunidad" "Pague impuestos por $100" 'pagar-impuesto))
 (define community2 (carta 5 "comunidad" "Es su cumpleaños, reciba $10 de cada jugador" 'cumpleanos))
 (define community3 (carta 6 "comunidad" "Salga de la cárcel gratis" 'salir-carcel))
-;; Esto cuenta como carta salidaCárcel y si el jugador obtiene
-;; esta tarjeta aumenta el contador de totalCartasSalirEnCarcel de su TDA.
-
-
-
-
-
-; 4. Creación del tablero
 
 
 (define tablero-vacio
@@ -90,20 +78,13 @@ a3
  (list (cons prop1 1) (cons prop2 3) (cons prop3 6)
  (cons prop4 8) (cons prop5 9) (cons prop6 11)
  (cons prop7 13) (cons prop8 14)))
-; Tablero con propiedades
-;; Función tablero-agregar-propiedad
-;; Recorrido: tablero
+
 (define tablero-completo (tablero-agregar-propiedad tablero-vacio
 lista-propiedades))
 
 
-; 5. Creación del juego
-
-
-
 (define g0 (juego '() tablero-completo 20000 2 0 10 4 1))
 
-; 6. Agregar jugadores al juego
 
 (define g1 (juego-agregar-jugador g0 p1))
 (define g2 (juego-agregar-jugador g1 p2))
@@ -115,9 +96,8 @@ a6
 (define a7 (jugador-mover p2 (juego-lanzar-dados 1 2) g2))
 a7
 
-;;El jugador se mueve, pero no se actualiza el juego, eso hay que aplicarlo en juego-jugar-turno
 
-; 7. Jugar (inicio de simulación)
-(display "===== CAPITALIA =====\n\n")
 
-(get-precio-propiedad prop1)
+(juego-extraer-carta tablero-completo "suerte")
+
+(juego-extraer-carta tablero-completo "comunidad")
