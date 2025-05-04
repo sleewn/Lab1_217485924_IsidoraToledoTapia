@@ -78,6 +78,11 @@
 ;--------------------------------------------------------
 
 
+; Descripción: Agregar propiedad
+; Dom: tablero (tablero) X propiedades con posición (lista de pares (propiedad . posicion))
+; Rec: tablero
+; Tipo recursión: No utiliza
+
 (define (pares-a-listas lista-pares)
   (cond
     [(null? lista-pares) '()]
@@ -92,10 +97,6 @@
            (get-casilllas-especiales tablero-juego)))
 
 
-; Descripción: Agregar propiedad
-; Dom: tablero (tablero) X propiedades con posición (lista de pares (propiedad . posicion))
-; Rec: tablero
-; Tipo recursión: No utiliza
 
 
 

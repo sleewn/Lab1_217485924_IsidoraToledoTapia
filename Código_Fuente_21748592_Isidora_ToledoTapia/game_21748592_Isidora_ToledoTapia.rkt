@@ -6,6 +6,7 @@
 (require "property_21748592_Isidora_ToledoTapia.rkt")
 
 (provide juego
+         get-tablero
          get-maximo-casas
          get-maximo-hoteles
          juego-agregar-jugador
@@ -13,7 +14,8 @@
          juego-lanzar-dados
          get-maximo-casas
          juego-jugar-turno
-         get-turno-actual)
+         get-turno-actual
+         get-jugadores)
          
 
 
@@ -40,7 +42,7 @@
 ; Tipo recursión: No utiliza
 
 (define (get-jugadores juego)
-  (car juego))
+  (reverse(car juego)))
 
 ;--------------------------------------------------------
  
@@ -240,13 +242,16 @@
 
 
 
-
 (define (buscar-propiedad-en-tablero lista-propiedades posicion)
+  (displayln "Elemento actual: ")
+  (displayln (car (cdr (car lista-propiedades))))
   (cond
     [(null? lista-propiedades) #f] ; No se encontró
-    [(= (cdr (car lista-propiedades)) posicion) ; posición coincide
-     (car lista-propiedades)] ; devuelve (cons propiedad posicion)
+    [(= (car (cdr (car lista-propiedades))) posicion) ; posición coincide
+     (car (car lista-propiedades))] ; devuelve la propiedad completa
     [else (buscar-propiedad-en-tablero (cdr lista-propiedades) posicion)]))
+
+
 
 
 (define (juego-obtener-propiedad-actual game player)
