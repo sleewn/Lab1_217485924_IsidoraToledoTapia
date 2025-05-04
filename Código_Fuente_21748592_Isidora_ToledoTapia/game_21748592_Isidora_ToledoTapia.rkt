@@ -216,8 +216,8 @@
 ; Tipo recursión: No utiliza
 
 (define (juego-lanzar-dados semilla1 semilla2)
-  (display (list "Dado 1:" (getDadoRandom semilla1)))
-  (display (list "Dado 2:" (getDadoRandom semilla2)))
+  (displayln (list "Dado 1:" (getDadoRandom semilla1)))
+  (displayln (list "Dado 2:" (getDadoRandom semilla2)))
   (list (getDadoRandom semilla1) (getDadoRandom semilla2)))
 
 
@@ -243,8 +243,6 @@
 
 
 (define (buscar-propiedad-en-tablero lista-propiedades posicion)
-  (displayln "Elemento actual: ")
-  (displayln (car (cdr (car lista-propiedades))))
   (cond
     [(null? lista-propiedades) #f] ; No se encontró
     [(= (car (cdr (car lista-propiedades))) posicion) ; posición coincide
@@ -322,13 +320,14 @@
 
   ;; Buscar la propiedad en la nueva posición
   (define propiedad-en-pos (buscar-propiedad-en-tablero (get-propiedades-tablero (get-tablero game-movido)) pos))
-
+  
+             
   ;; Comprar propiedad si corresponde
   (define game-comprado
     (if (and comprarPropiedad (not (null? propiedad-en-pos)))
         (juego-actualizar-jugador
          game-movido
-         (jugador-comprar-propiedad jugador-movido (car propiedad-en-pos)))
+         (jugador-comprar-propiedad jugador-movido (cdr propiedad-en-pos)))
         game-movido))
 
   ;; Pagar multa si corresponde

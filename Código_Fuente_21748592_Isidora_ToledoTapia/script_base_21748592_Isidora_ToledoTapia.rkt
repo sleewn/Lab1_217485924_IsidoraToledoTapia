@@ -186,8 +186,8 @@ lista-propiedades))
 ;(juego-lanzar-dados 1 2)
 ;(get-tablero g2)
 
-;(define g3 (juego-jugar-turno g2 (juego-lanzar-dados 1 2) #t #f #f #f))
-;g3 ;; esto imprime g3 para que lo podamos evaluar.
+(define g3 (juego-jugar-turno g2 (juego-lanzar-dados 1 2) #t #f #f #f))
+g3 ;; esto imprime g3 para que lo podamos evaluar.
 
 
 ;; Explicación:
