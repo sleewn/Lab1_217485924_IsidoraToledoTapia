@@ -19,7 +19,7 @@ RNF8. (obligatorio) Organización: 1
 
 RNF9. Historial Github: 1
 
-RNF10. (obligatorio) Script de pruebas: 1
+RNF10. (obligatorio) Script de pruebas: 0.5
 
 RNF11. (obligatorio) Prerrequisitos: 1
 
@@ -61,7 +61,7 @@ RF10 - TDA juego - otros - lanzar dados: 1
 RF11 - TDA Jugador - modificador - Mover Jugador: 1
 
 
-RF12 - TDA Jugador - modificador - Comprar propiedad: 1
+RF12 - TDA Jugador - modificador - Comprar propiedad: 0.75 (Faltó actualizar dueño de la propiedad)
 
 
 RF13 - TDA Jugador - otros - Calcular Renta: 0
@@ -82,10 +82,10 @@ RF17 - TDA Jugador - otros - Pagar Renta: 1
 RF18 - TDA Propiedad - modificador - Hipotecar Propiedad: 1
 
 
-RF19 - TDA Juego - modificador - Extraer carta: 0
+RF19 - TDA Juego - modificador - Extraer carta: 1
 
 
 RF20 - TDA Jugador - otros - Verificar bancarrota: 1
 
 
- RF21 - TDA Juego - modificador - Realizar turno: 0
+ RF21 - TDA Juego - modificador - Realizar turno: 0.25

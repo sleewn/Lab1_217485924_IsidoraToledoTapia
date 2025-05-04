@@ -240,7 +240,10 @@
 
 
 
-
+; Descripción: Buscar propiedad en el tablero
+; Dom: lista-propiedades (lista de propiedades) X posicion (número)
+; Rec: propiedad (propiedad o #f)
+; Tipo recursión: Natural
 
 (define (buscar-propiedad-en-tablero lista-propiedades posicion)
   (cond
@@ -250,7 +253,10 @@
     [else (buscar-propiedad-en-tablero (cdr lista-propiedades) posicion)]))
 
 
-
+; Descripción: Obtener propiedad actual de un jugador
+; Dom: game (juego) X player (jugador)
+; Rec: propiedad (propiedad)
+; Tipo recursión: No utiliza
 
 (define (juego-obtener-propiedad-actual game player)
   (car (buscar-propiedad-en-tablero
@@ -262,6 +268,10 @@
 ;------------------------------------------
 
 
+; Descripción: Actualizar la lista de jugadores
+; Dom: jugador-actualizado (jugador) X jugadores (lista de jugadores)
+; Rec: lista de jugadores (actualizada)
+; Tipo recursión: Natural
 
 (define (actualizar-lista-jugadores jugador-actualizado jugadores)
   (cond
@@ -272,6 +282,13 @@
      (cons (car jugadores)
            (actualizar-lista-jugadores jugador-actualizado (cdr jugadores)))]))
 
+
+;------------------------------------------
+
+; Descripción: Actualizar un jugador en el juego
+; Dom: g (juego) X jugador-actualizado (jugador)
+; Rec: juego (actualizado)
+; Tipo recursión: No utiliza
 
 (define (juego-actualizar-jugador g jugador-actualizado)
   (juego
@@ -286,6 +303,10 @@
 
 
 
+; Descripción: Actualizar propiedad en el tablero
+; Dom: lista-propiedades (lista de propiedades) X propiedad (propiedad) X posicion (número) X nuevo-dueno (jugador)
+; Rec: lista de propiedades (actualizada)
+; Tipo recursión: Natural
 
 (define (actualizar-propiedad-en-tablero lista-propiedades propiedad posicion nuevo-dueno)
   (cond
@@ -299,37 +320,10 @@
            (actualizar-propiedad-en-tablero (cdr lista-propiedades) propiedad posicion nuevo-dueno))]))
 
 
-(define (actualizar-jugador-en-lista jugadores jugador-actualizado)
-  (map (lambda (j)
-         (if (= (get-id j) (get-id jugador-actualizado))
-             jugador-actualizado
-             j))
-       jugadores))
 
-
-(define (set-jugadores game nuevos-jugadores)
-  (juego
-   nuevos-jugadores
-   (get-tablero game)
-   (get-dinero-banco game)
-   (get-numero-dados game)
-   (get-turno-actual game)
-   (get-tasa-impuesto game)
-   (get-maximo-casas game)
-   (get-maximo-hoteles game)))
 
 ;------------------------------------------
 
-; Descripción: Función que ejecuta el turno completo aplicando todas las reglas del juego
-; Dom: juego (game) X valor dados (pair/lista) X
-; comprarPropiedad_or_construirCasa(boolean #t o #f) X
-; construirHotel(boolean #t o #f) X
-; pagarMultaSalirCarcel(boolean #t o #f) X
-; usarTarjetaSalirCarcel(boolean #t o #f)
-; Rec: juego actualizado
-; Tipo recursión: No utiliza
-
-;------------------------------------------
 
 ; Descripción: Función que ejecuta el turno completo aplicando todas las reglas del juego
 ; Dom: juego (game) X valor dados (pair/lista) X
@@ -347,8 +341,6 @@
   (define jugador-movido
     (jugador-mover (juego-obtener-jugador-actual game) dados game))
   
-             
-
   ;; Actualizar juego con el jugador movido
   (define game-movido
     (juego-actualizar-jugador game jugador-movido))
@@ -366,8 +358,6 @@
          game-movido
          (jugador-comprar-propiedad jugador-movido (cdr propiedad-en-pos)))
         game-movido))
-  
-  
   
   ;; Pagar multa si corresponde
   (define game-multa
