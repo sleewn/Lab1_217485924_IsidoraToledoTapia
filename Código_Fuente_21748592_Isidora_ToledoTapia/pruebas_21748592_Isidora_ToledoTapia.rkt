@@ -47,8 +47,6 @@ a2
 (define a3(set-en-carcel p1 #t))
 a3
 
-(define a4(jugador-comprar-propiedad p2 prop1))
-a4
 
 
 (jugador-esta-en-bancarrota p2)
@@ -122,3 +120,4 @@ a7
 ; 7. Jugar (inicio de simulación)
 (display "===== CAPITALIA =====\n\n")
 
+(get-precio-propiedad prop1)

@@ -75,13 +75,12 @@
   (tablero (get-propiedades-tablero t)(get-cartas-suerte-tablero t)
            nuevas-propiedades(get-casilllas-especiales t)))
 
+
 ;--------------------------------------------------------
-
-
-; Descripción: Agregar propiedad
-; Dom: tablero (tablero) X propiedades con posición (lista de pares (propiedad . posicion))
-; Rec: tablero
-; Tipo recursión: No utiliza
+; Descripción: Convierte una lista de pares en una lista de listas
+; Dom: lista-pares (lista de pares) de la forma (x . y)
+; Rec: lista (lista de listas)
+; Tipo recursión: Recursión natural
 
 (define (pares-a-listas lista-pares)
   (cond
@@ -89,6 +88,12 @@
     [else (cons (list (car (car lista-pares)) (cdr (car lista-pares)))
                 (pares-a-listas (cdr lista-pares)))]))
 
+
+;--------------------------------------------------------
+; Descripción: Agregar propiedad
+; Dom: tablero (tablero) X propiedades con posición (lista de pares (propiedad . posicion))
+; Rec: tablero
+; Tipo recursión: No utiliza
 
 (define (tablero-agregar-propiedad tablero-juego lista-propiedades)
   (tablero (pares-a-listas lista-propiedades)
@@ -100,9 +105,3 @@
 
 
 
-
-
-
-
-;(define lista-propiedades (list (cons prop1 1) (cons prop2 3) (cons prop3 6)))
-;(define tablero-actualizado (tablero-agregar-propiedades tablero-juego lista-propiedades))

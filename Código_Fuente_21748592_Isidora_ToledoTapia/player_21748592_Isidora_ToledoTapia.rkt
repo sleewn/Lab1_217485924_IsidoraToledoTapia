@@ -165,9 +165,9 @@
 ; Tipo recursión: No utiliza
 
 (define (jugador-comprar-propiedad player property)
-  (cond [(>= (get-dinero player) (caddr property))
+  (cond [(>= (get-dinero player) (cadr property))
      (jugador (get-id player) (get-nombre player)
-              (- (get-dinero player) (caddr property))
+              (- (get-dinero player) (cadr property))
               (cons property (get-propiedades player))
               (get-pos player)
               (get-en-carcel player)

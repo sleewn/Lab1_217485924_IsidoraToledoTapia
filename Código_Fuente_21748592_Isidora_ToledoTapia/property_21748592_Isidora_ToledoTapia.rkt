@@ -16,7 +16,8 @@
          propiedad-construir-hotel
          propiedad-construir-casa
          propiedad-calcular-renta
-         propiedad)
+         propiedad
+         set-dueno)
 
 ;--------------------------------------------------------
 
@@ -255,8 +256,12 @@
 
 
 ;--------------------------------------------------------
-;No puedo usar esta función por dependencias circulares
-; Era para actualizar el dueño al comprar una propiedad
+
+; Descripción: Cambia el dueño de una propiedad por un nuevo dueño
+; Dom: p (propiedad) X nuevo-dueno
+; Rec: propiedad (con el nuevo dueño actualizado)
+; Tipo recursión: No utiliza
+
 (define (set-dueno p nuevo-dueno)
   (propiedad (get-id-propiedad p) (get-nombre-propiedad p)
              (get-precio-propiedad p) (get-renta-propiedad p)

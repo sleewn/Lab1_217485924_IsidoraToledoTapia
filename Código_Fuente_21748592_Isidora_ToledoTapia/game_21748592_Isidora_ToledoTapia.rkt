@@ -287,10 +287,47 @@
 
 
 
+(define (actualizar-propiedad-en-tablero lista-propiedades propiedad posicion nuevo-dueno)
+  (cond
+    [(null? lista-propiedades) '()]
+    [(= (cdr (car lista-propiedades)) posicion)
+     (cons
+      (cons (set-dueno (car (car lista-propiedades)) nuevo-dueno) posicion)
+      (cdr lista-propiedades))]
+    [else
+     (cons (car lista-propiedades)
+           (actualizar-propiedad-en-tablero (cdr lista-propiedades) propiedad posicion nuevo-dueno))]))
 
 
+(define (actualizar-jugador-en-lista jugadores jugador-actualizado)
+  (map (lambda (j)
+         (if (= (get-id j) (get-id jugador-actualizado))
+             jugador-actualizado
+             j))
+       jugadores))
 
 
+(define (set-jugadores game nuevos-jugadores)
+  (juego
+   nuevos-jugadores
+   (get-tablero game)
+   (get-dinero-banco game)
+   (get-numero-dados game)
+   (get-turno-actual game)
+   (get-tasa-impuesto game)
+   (get-maximo-casas game)
+   (get-maximo-hoteles game)))
+
+;------------------------------------------
+
+; Descripción: Función que ejecuta el turno completo aplicando todas las reglas del juego
+; Dom: juego (game) X valor dados (pair/lista) X
+; comprarPropiedad_or_construirCasa(boolean #t o #f) X
+; construirHotel(boolean #t o #f) X
+; pagarMultaSalirCarcel(boolean #t o #f) X
+; usarTarjetaSalirCarcel(boolean #t o #f)
+; Rec: juego actualizado
+; Tipo recursión: No utiliza
 
 ;------------------------------------------
 
@@ -309,18 +346,18 @@
   ;; Mover al jugador según los dados
   (define jugador-movido
     (jugador-mover (juego-obtener-jugador-actual game) dados game))
-  
+
+             
 
   ;; Actualizar juego con el jugador movido
   (define game-movido
     (juego-actualizar-jugador game jugador-movido))
-
+  
   ;; Obtener la posición del jugador movido
   (define pos (get-pos jugador-movido))
 
   ;; Buscar la propiedad en la nueva posición
   (define propiedad-en-pos (buscar-propiedad-en-tablero (get-propiedades-tablero (get-tablero game-movido)) pos))
-  
              
   ;; Comprar propiedad si corresponde
   (define game-comprado
@@ -346,12 +383,3 @@
        game-multa
        (set-en-carcel jugador-movido #f))
       game-multa))
-
-
-
-
-
-
-
-
-

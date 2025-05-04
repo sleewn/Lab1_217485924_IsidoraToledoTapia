@@ -83,17 +83,27 @@
 
 ;--------------------------------------------------------
 
+; Descripción: Ejecuta la acción correspondiente a una carta sobre un jugador
+; Dom: carta (carta) X jugador (jugador)
+; Rec: jugador (modificado según la acción)
+; Tipo recursión: No utiliza
+
 ; Función para ejecutar la acción asociada con una carta
 (define (ejecutar-accion carta jugador)
   (cond
     [(eq? (get-accion carta) 'ir-a-salida) (ir-a-salida jugador)]
     [(eq? (get-accion carta) 'ir-a-carcel) (ir-a-carcel jugador)]
     [(eq? (get-accion carta) 'pagar-impuesto) (pagar-impuesto jugador)]
-    ;[(eq? (get-accion carta) 'cumpleanos) (cumpleanos jugador)] **********
+    ;[(eq? (get-accion carta) 'cumpleanos) (cumpleanos jugador)] *
     [(eq? (get-accion carta) 'salir-carcel) (salir-carcel jugador)]
     [(eq? (get-accion carta) 'banco-paga) (banco-paga jugador)]))
 
 
+;--------------------------------------------------------
+; Descripción: Extrae una carta aleatoria de un mazo del tablero (suerte o comunidad).
+; Dom: t (tablero) X tipoMazo (string: "suerte" o "comunidad")
+; Rec: carta (elemento del mazo)
+; Tipo recursión: No utiliza
 
 (define (juego-extraer-carta t tipoMazo)
   ;; Obtener el mazo correspondiente
@@ -101,6 +111,6 @@
                 [(eq? tipoMazo "suerte") (get-cartas-suerte-tablero t)]
                 [(eq? tipoMazo "comunidad") (get-cartas-comunidad-tablero t)]))
   
-  ;; Extraer una carta aleatoria del mazo
+  ;; Extraer una carta aleatoria del mazo (no funciona)
   (define indice (random (length mazo))) ;; Genera un índice aleatorio
   (list-ref mazo indice)) ;; Retornar la carta en ese índice

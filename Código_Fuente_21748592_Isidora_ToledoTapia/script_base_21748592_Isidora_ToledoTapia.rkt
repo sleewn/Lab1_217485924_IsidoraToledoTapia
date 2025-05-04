@@ -225,7 +225,7 @@ g3 ;; esto imprime g3 para que lo podamos evaluar.
 ;; construirHotel: #f
 ;; pagarMultaSalirCarcel: #f
 ;; usarTarjetaSalirCarcel: #f
-
+(juego-lanzar-dados 2 5)
 ;(define g4 (juego-jugar-turno g3 (juego-lanzar-dados 2 5) #t #f #f #f))
 ;g4 ;; esto imprime g4
 
