@@ -1,4 +1,32 @@
 
+Requerimientos No Funcionales (RNF)
+
+RNF1. (obligatorio) Autoevaluación: 1
+
+RNF2. (obligatorio) Lenguaje: 1
+
+RNF3. (obligatorio) Versión: 1
+
+RNF4. (obligatorio) Standard: 1
+
+RNF5. (obligatorio) No variables: 1
+
+RNF6. (1 pts) Documentación: 1
+
+RNF7. (obligatorio) Dom -> Rec: 1
+
+RNF8. (obligatorio) Organización: 1
+
+RNF9. Historial Github: 1
+
+RNF10. (obligatorio) Script de pruebas: 1
+
+RNF11. (obligatorio) Prerrequisitos: 1
+
+--------------------------------------------------------
+
+Requerimientos Funcionales (RF)
+
 
 RF1 - TDAs: 1
 
@@ -30,7 +58,7 @@ RF9 - TDA Juego - selector - obtener jugador actual: 1
 RF10 - TDA juego - otros - lanzar dados: 1
 
 
-RF11 - TDA Jugador - modificador - Mover Jugador: 0 ***
+RF11 - TDA Jugador - modificador - Mover Jugador: 1
 
 
 RF12 - TDA Jugador - modificador - Comprar propiedad: 1
@@ -48,7 +76,7 @@ RF15 - TDA Propiedad- modificador -Construir Casa: 1
 RF16 - TDA Propiedad- modificador -Construir Hotel: 1
 
 
-RF17 - TDA Jugador - otros - Pagar Renta: 0
+RF17 - TDA Jugador - otros - Pagar Renta: 1
 
 
 RF18 - TDA Propiedad - modificador - Hipotecar Propiedad: 1
@@ -60,4 +88,4 @@ RF19 - TDA Juego - modificador - Extraer carta: 0
 RF20 - TDA Jugador - otros - Verificar bancarrota: 1
 
 
- RF21 - TDA Juego - modificador - Realizar turno: Tengo que hacer todo lo demás primero
+ RF21 - TDA Juego - modificador - Realizar turno: 0

@@ -2,9 +2,11 @@
 
 
 (provide tablero
+         get-propiedades-tablero
          tablero-agregar-propiedad
          get-cartas-suerte-tablero
-         get-cartas-comunidad-tablero)
+         get-cartas-comunidad-tablero
+         pares-a-listas)
 
 ;--------------------------------------------------------
 
@@ -75,15 +77,28 @@
 
 ;--------------------------------------------------------
 
+
+(define (pares-a-listas lista-pares)
+  (cond
+    [(null? lista-pares) '()]
+    [else (cons (list (car (car lista-pares)) (cdr (car lista-pares)))
+                (pares-a-listas (cdr lista-pares)))]))
+
+
+(define (tablero-agregar-propiedad tablero-juego lista-propiedades)
+  (tablero (pares-a-listas lista-propiedades)
+           (get-cartas-suerte-tablero tablero-juego)
+           (get-cartas-comunidad-tablero tablero-juego)
+           (get-casilllas-especiales tablero-juego)))
+
+
 ; Descripción: Agregar propiedad
 ; Dom: tablero (tablero) X propiedades con posición (lista de pares (propiedad . posicion))
 ; Rec: tablero
 ; Tipo recursión: No utiliza
 
-(define (tablero-agregar-propiedad tablero-juego lista-propiedades)
-  (tablero lista-propiedades (get-cartas-suerte-tablero tablero-juego)
-           (get-cartas-comunidad-tablero tablero-juego)
-           (get-casilllas-especiales tablero-juego)))
+
+
 
 
 

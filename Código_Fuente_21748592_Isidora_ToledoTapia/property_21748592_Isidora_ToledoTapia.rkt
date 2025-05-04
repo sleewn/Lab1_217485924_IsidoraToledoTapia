@@ -1,10 +1,21 @@
 #lang racket
 
-(require "game_21748592_Isidora_ToledoTapia.rkt")
 
 
 
-(provide get-precio-propiedad
+
+(provide get-id-propiedad
+         get-nombre-propiedad
+         get-precio-propiedad
+         get-renta-propiedad
+         get-dueño-propiedad
+         get-casas-propiedad
+         get-esHotel-propiedad
+         get-estaHipotecada-propiedad
+
+         propiedad-construir-hotel
+         propiedad-construir-casa
+         propiedad-calcular-renta
          propiedad)
 
 ;--------------------------------------------------------
@@ -29,8 +40,8 @@
 ; Tipo recursión: No utiliza
 
 
-(define (get-id-propiedad propiedad)
-  (car propiedad))
+(define (get-id-propiedad p)
+  (car p))
 
 ;--------------------------------------------------------
 
@@ -41,8 +52,8 @@
 ; Tipo recursión: No utiliza
 
 
-(define (get-nombre-propiedad propiedad)
-  (cadr propiedad))
+(define (get-nombre-propiedad p)
+  (cadr p))
 
 ;--------------------------------------------------------
 
@@ -52,13 +63,13 @@
 ; Rec: precio
 ; Tipo recursión: No utiliza
 
-(define (get-precio-propiedad propiedad)
-  (caddr propiedad))
+(define (get-precio-propiedad p)
+  (caddr p))
 
 
 
 
-(define prop1 (propiedad 1 "Paseo Mediterráneo" 60 2 #f 0 #f #f))
+
 
 
 
@@ -71,8 +82,8 @@
 ; Tipo recursión: No utiliza
 
 
-(define (get-renta-propiedad propiedad)
-  (cadddr propiedad))
+(define (get-renta-propiedad p)
+  (cadddr p))
 
 
 ;--------------------------------------------------------
@@ -84,8 +95,8 @@
 ; Tipo recursión: No utiliza
 
 
-(define (get-dueño-propiedad propiedad)
-  (car (cddddr propiedad)))
+(define (get-dueño-propiedad p)
+  (car (cddddr p)))
 
 ;--------------------------------------------------------
 
@@ -95,8 +106,8 @@
 ; Rec: casas
 ; Tipo recursión: No utiliza
 
-(define (get-casas-propiedad propiedad)
-  (cadr (cddddr propiedad)))
+(define (get-casas-propiedad p)
+  (cadr (cddddr p)))
 
 
 
@@ -108,8 +119,8 @@
 ; Rec: esHotel (bool)
 ; Tipo recursión: No utiliza
 
-(define (get-esHotel-propiedad propiedad)
-  (caddr (cddddr propiedad)))
+(define (get-esHotel-propiedad p)
+  (caddr (cddddr p)))
 
 
 ;--------------------------------------------------------
@@ -121,8 +132,8 @@
 ; Tipo recursión: No utiliza
 
 
-(define (get-estaHipotecada-propiedad propiedad)
-  (cadddr (cddddr propiedad)))
+(define (get-estaHipotecada-propiedad p)
+  (cadddr (cddddr p)))
 
 
 ;--------------------------------------------------------
@@ -134,10 +145,10 @@
 ; Tipo recursión: No utiliza
 
 (define (actualizar-propiedad p nueva-cantidad-casas)
-  (propiedad ((get-id-propiedad p) (get-nombre-propiedad p)
+  (propiedad (get-id-propiedad p) (get-nombre-propiedad p)
              (get-precio-propiedad p) (get-renta-propiedad p)
              (get-dueño-propiedad p) nueva-cantidad-casas
-             (get-esHotel-propiedad p) (get-estaHipotecada-propiedad p))))
+             (get-esHotel-propiedad p) (get-estaHipotecada-propiedad p)))
              
 
 
@@ -154,7 +165,7 @@
 
 
 (define (propiedad-construir-casa p j)
-  (cond [< (get-casas-propiedad p) (get-maximo-casas j)]
+  (cond [< (get-casas-propiedad p) (car (cddddr j))]
         (actualizar-propiedad p (+ (get-casas-propiedad p) 1))
   [else p]))
 
@@ -189,7 +200,7 @@
 ; Tipo recursión: No utiliza
 
 (define (propiedad-construir-hotel p j)
-  (cond [= (get-casas-propiedad p) (get-maximo-casas j)]
+  (cond [= (get-casas-propiedad p) (car (cddddr j))]
         (actualizar-propiedad-con-hotel p #t)
   [else p]))
      
@@ -233,8 +244,45 @@
      (get-precio-propiedad propiedad)] ; Sin construcciones queda igual
     [(get-esHotel-propiedad propiedad)
      (* 2 (* (get-precio-propiedad propiedad)
-             (+ 1 (* 0.2 (get-maximo-casas)))))] ; Con hotel
+             (+ 1 (* 0.2 4))))] ; Con hotel
     [else
      (* (get-precio-propiedad propiedad)
         (+ 1 (* 0.2 (get-casas-propiedad propiedad))))])) ; Por cada casa construida aumenta 20% el precio
+
+
+
+
+
+
+;--------------------------------------------------------
+;No puedo usar esta función por dependencias circulares
+; Era para actualizar el dueño al comprar una propiedad
+(define (set-dueno p nuevo-dueno)
+  (propiedad (get-id-propiedad p) (get-nombre-propiedad p)
+             (get-precio-propiedad p) (get-renta-propiedad p)
+             nuevo-dueno (get-casas-propiedad p)
+             (get-esHotel-propiedad p) (get-estaHipotecada-propiedad p)))
+
+
+
+
+
+
+
+
+
+
+
+             
+
+
+
+
+
+
+
+
+
+
+
 

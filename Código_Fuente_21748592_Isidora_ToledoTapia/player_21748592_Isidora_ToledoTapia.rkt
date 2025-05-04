@@ -1,6 +1,6 @@
 #lang racket
 
-
+(require "board_21748592_Isidora_ToledoTapia.rkt")
 
 (provide jugador
          get-id
@@ -13,7 +13,12 @@
          set-pos
          set-dinero
          set-en-carcel
-         set-totalCartasSalirCarcel)
+         jugador-comprar-propiedad
+         set-totalCartasSalirCarcel
+         jugador-esta-en-bancarrota
+         jugador-mover
+
+         jugador-pagar-renta)
 
 
 
@@ -37,8 +42,8 @@
 ; Dom: jugador
 ; Rec: id
 ; Tipo recursión: No utiliza
-(define (get-id jugador)
-  (car jugador))
+(define (get-id j)
+  (car j))
 
 
 ;--------------------------------------------------------
@@ -48,8 +53,8 @@
 ; Dom: jugador
 ; Rec: nombre
 ; Tipo recursión: No utiliza
-(define (get-nombre jugador)
-  (cadr jugador))
+(define (get-nombre j)
+  (cadr j))
 
 ;--------------------------------------------------------
 
@@ -59,8 +64,8 @@
 ; Rec: dinero
 ; Tipo recursión: No utiliza
 
-(define (get-dinero jugador)
-  (caddr jugador))
+(define (get-dinero j)
+  (caddr j))
 
 ;--------------------------------------------------------
 
@@ -70,8 +75,8 @@
 ; Rec: propiedades
 ; Tipo recursión: No utiliza
 
-(define (get-propiedades jugador)
-  (cadddr jugador))
+(define (get-propiedades j)
+  (cadddr j))
 
 
 ;--------------------------------------------------------
@@ -81,8 +86,8 @@
 ; Dom: jugador
 ; Rec: posición
 ; Tipo recursión: No utiliza
-(define (get-pos jugador)
-  (car (cddddr jugador)))
+(define (get-pos j)
+  (car (cddddr j)))
 
 
 ;--------------------------------------------------------
@@ -92,8 +97,8 @@
 ; Dom: jugador
 ; Rec: #t | #f
 ; Tipo recursión: No utiliza
-(define (get-en-carcel jugador)
-  (cadr (cddddr jugador)))
+(define (get-en-carcel j)
+  (cadr (cddddr j)))
 
 
 ;--------------------------------------------------------
@@ -103,8 +108,8 @@
 ; Dom: jugador
 ; Rec: cartas-carcel
 ; Tipo recursión: No utiliza
-(define (get-cartas-carcel jugador)
-  (caddr (cddddr jugador)))
+(define (get-cartas-carcel j)
+  (caddr (cddddr j)))
 
 
 ;--------------------------------------------------------
@@ -114,10 +119,10 @@
 ; Rec: jugador
 ; Tipo recursión: No utiliza
 
-(define (set-pos jugador nueva-pos)
-  (jugador (get-id jugador) (get-nombre jugador) (get-dinero jugador)
-                (get-propiedades jugador) nueva-pos
-                (get-en-carcel jugador) (get-cartas-carcel jugador)))
+(define (set-pos j nueva-pos)
+  (jugador (get-id j) (get-nombre j) (get-dinero j)
+                (get-propiedades j) nueva-pos
+                (get-en-carcel j) (get-cartas-carcel j)))
 
 
 
@@ -141,10 +146,10 @@
 ; Tipo recursión: No utiliza
 
 
-(define (set-en-carcel jugador nuevo-estado)
-  (jugador (get-id jugador) (get-nombre jugador) (get-dinero jugador)
-                (get-propiedades jugador) (get-pos jugador)
-                nuevo-estado (get-cartas-carcel jugador)))
+(define (set-en-carcel j nuevo-estado)
+  (jugador (get-id j) (get-nombre j) (get-dinero j)
+                (get-propiedades j) (get-pos j)
+                nuevo-estado (get-cartas-carcel j)))
 
 
 
@@ -171,7 +176,7 @@
     [else player])) ; No puede comprar
 
 
-
+;Falta actualizar el dueño de la propiedad, pero esto de las dependecias circulares me mata
 
 ;--------------------------------------------------------
 
@@ -181,10 +186,10 @@
 ; Tipo recursión: No utiliza
 
 
-(define (set-totalCartasSalirCarcel jugador)
-  (jugador (get-id jugador) (get-nombre jugador) (get-dinero)
-                (get-propiedades jugador) (get-pos jugador)
-                (get-en-carcel jugador) (+ (get-cartas-carcel jugador) 1)))
+(define (set-totalCartasSalirCarcel j)
+  (jugador (get-id j) (get-nombre j) (get-dinero j)
+                (get-propiedades j) (get-pos j)
+                (get-en-carcel j) (+ (get-cartas-carcel j) 1)))
 
 
 
@@ -215,16 +220,6 @@
   (<= (get-dinero jugador) 0))
 
 
-;--------------------------------------------------------
-
-
-; Descripción: Función para calcular la renta de una propiedad.
-; Dom: player (jugador) X game (TDA Juego)
-; Rec: monto (int)
-; Tipo recursión: No utiliza
-; Hay que evitar requerimientos circulares, no puedo llamar a game
-
-
 
 
 ;--------------------------------------------------------
@@ -235,10 +230,15 @@
 ; Rec: player
 ; Tipo recursión: No utiliza
 
+(define (jugador-mover j valoresDados g)
+  
+  (define total-casillas (length (get-propiedades-tablero (cadr g))))
 
-(define (jugador-mover jugador valoresDados juego)
-  (set-pos jugador (modulo (+ (get-pos jugador) (+ (car valoresDados) (cadr valoresDados))) 15))) ; casillas del juego
-
+  (define avance (+ (car valoresDados) (cadr valoresDados)))
+  
+  (define nueva-posicion (modulo (+ (get-pos j) avance) total-casillas))
+  
+  (set-pos j nueva-posicion))
 
 
 ;--------------------------------------------------------

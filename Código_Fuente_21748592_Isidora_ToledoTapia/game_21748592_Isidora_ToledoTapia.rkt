@@ -3,13 +3,17 @@
 
 (require "board_21748592_Isidora_ToledoTapia.rkt")
 (require "player_21748592_Isidora_ToledoTapia.rkt")
+(require "property_21748592_Isidora_ToledoTapia.rkt")
 
 (provide juego
          get-maximo-casas
          get-maximo-hoteles
          juego-agregar-jugador
-         lanzar-dados
-         get-maximo-casas)
+         juego-obtener-jugador-actual
+         juego-lanzar-dados
+         get-maximo-casas
+         juego-jugar-turno
+         get-turno-actual)
          
 
 
@@ -18,7 +22,7 @@
 ; Descripción: Constructor Juego
 ; Dom: jugadores (lista) X tablero (tablero) X dineroBanco (int) X
      ;numeroDados (int) X turnoActual (int) X tasaImpuesto (int) X
-     ;maximoCasas (int) X maximoHoteles (int) X estadoJuego(string))
+     ;maximoCasas (int) X maximoHoteles (int))
 ; Rec: juego
 ; Tipo recursión: No utiliza
 
@@ -130,7 +134,7 @@
 ; Tipo recursión: No utiliza
 
 (define (juego-agregar-jugador partida player)
-  (juego (cons (jugador (get-id player) (get-nombre player) (get-dinero jugador)
+  (juego (cons (jugador (get-id player) (get-nombre player) (get-dinero player)
                (get-propiedades player) (get-pos player) (get-en-carcel player)
                (get-cartas-carcel player))
                
@@ -147,19 +151,36 @@
 
 
 
+;--------------------------------------------------------
+
+; Descripción: Modificador del turnoActual
+; Dom: juego
+; Rec: juego
+; Tipo recursión: No utiliza
+
+
+(define (set-turnoActual g)
+  (juego ((get-tablero g)
+         (get-dinero-banco g)
+         (get-numero-dados g)
+         (+(get-turno-actual g)1)
+         (get-tasa-impuesto g)
+         (get-maximo-casas g)
+         (get-maximo-hoteles g))))
+
 
 ;--------------------------------------------------------
 
 ; Descripción: Obtener jugador actual
 ; Dom: juego
-; Rec: jugador actual
+; Rec: jugador 
 ; Tipo recursión: No utiliza
 
 ; "Resolver de forma declarativa"
 
 
-(define (juego-obtener-jugador-actual juego)
-  (list-ref (get-jugadores juego) (get-turno-actual juego)))
+(define (juego-obtener-jugador-actual g)
+  (list-ref (get-jugadores g) (get-turno-actual g)))
 
 
 ;--------------------------------------------------------
@@ -192,9 +213,141 @@
 ; Rec: (valordado1 valordado2)
 ; Tipo recursión: No utiliza
 
-(define (lanzar-dados semilla1 semilla2)
+(define (juego-lanzar-dados semilla1 semilla2)
   (display (list "Dado 1:" (getDadoRandom semilla1)))
   (display (list "Dado 2:" (getDadoRandom semilla2)))
   (list (getDadoRandom semilla1) (getDadoRandom semilla2)))
+
+
+
+;------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(define (buscar-propiedad-en-tablero lista-propiedades posicion)
+  (cond
+    [(null? lista-propiedades) #f] ; No se encontró
+    [(= (cdr (car lista-propiedades)) posicion) ; posición coincide
+     (car lista-propiedades)] ; devuelve (cons propiedad posicion)
+    [else (buscar-propiedad-en-tablero (cdr lista-propiedades) posicion)]))
+
+
+(define (juego-obtener-propiedad-actual game player)
+  (car (buscar-propiedad-en-tablero
+        (get-propiedades-tablero (get-tablero game))
+        (get-pos player))))
+
+
+
+;------------------------------------------
+
+
+
+(define (actualizar-lista-jugadores jugador-actualizado jugadores)
+  (cond
+    [(null? jugadores) '()]
+    [(= (get-id (car jugadores)) (get-id jugador-actualizado))
+     (cons jugador-actualizado (cdr jugadores))]
+    [else
+     (cons (car jugadores)
+           (actualizar-lista-jugadores jugador-actualizado (cdr jugadores)))]))
+
+
+(define (juego-actualizar-jugador g jugador-actualizado)
+  (juego
+   (actualizar-lista-jugadores jugador-actualizado (get-jugadores g))
+   (get-tablero g)
+   (get-dinero-banco g)
+   (get-numero-dados g)
+   (get-turno-actual g)
+   (get-tasa-impuesto g)
+   (get-maximo-casas g)
+   (get-maximo-hoteles g)))
+
+
+
+
+
+
+
+
+
+;------------------------------------------
+
+; Descripción: Función que ejecuta el turno completo aplicando todas las reglas del juego
+; Dom: juego (game) X valor dados (pair/lista) X
+; comprarPropiedad_or_construirCasa(boolean #t o #f) X
+; construirHotel(boolean #t o #f) X
+; pagarMultaSalirCarcel(boolean #t o #f) X
+; usarTarjetaSalirCarcel(boolean #t o #f)
+; Rec: juego actualizado
+; Tipo recursión: No utiliza
+
+
+(define (juego-jugar-turno game dados comprarPropiedad construirCasa pagarMultaSalirCarcel usarTarjetaSalirCarcel)
+  
+  ;; Mover al jugador según los dados
+  (define jugador-movido
+    (jugador-mover (juego-obtener-jugador-actual game) dados game))
+  
+
+  ;; Actualizar juego con el jugador movido
+  (define game-movido
+    (juego-actualizar-jugador game jugador-movido))
+
+  ;; Obtener la posición del jugador movido
+  (define pos (get-pos jugador-movido))
+
+  ;; Buscar la propiedad en la nueva posición
+  (define propiedad-en-pos (buscar-propiedad-en-tablero (get-propiedades-tablero (get-tablero game-movido)) pos))
+
+  ;; Comprar propiedad si corresponde
+  (define game-comprado
+    (if (and comprarPropiedad (not (null? propiedad-en-pos)))
+        (juego-actualizar-jugador
+         game-movido
+         (jugador-comprar-propiedad jugador-movido (car propiedad-en-pos)))
+        game-movido))
+
+  ;; Pagar multa si corresponde
+  (define game-multa
+    (if pagarMultaSalirCarcel
+        (juego-actualizar-jugador
+         game-comprado
+         (set-en-carcel
+          (set-dinero jugador-movido (- (get-dinero jugador-movido) 50))
+          #f))
+        game-comprado))
+
+  ;; Usar tarjeta de salir de la cárcel si corresponde
+  (if usarTarjetaSalirCarcel
+      (juego-actualizar-jugador
+       game-multa
+       (set-en-carcel jugador-movido #f))
+      game-multa))
+
+
+
+
+
+
+
 
 

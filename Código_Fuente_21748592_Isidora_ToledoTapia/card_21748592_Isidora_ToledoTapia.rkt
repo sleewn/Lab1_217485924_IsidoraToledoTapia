@@ -102,5 +102,5 @@
                 [(eq? tipoMazo "comunidad") (get-cartas-comunidad-tablero t)]))
   
   ;; Extraer una carta aleatoria del mazo
-  (define indice (random 1 4))  ;; Genera un índice aleatorio
-  (list-ref mazo indice))                  ;; Retornar la carta en ese índice
+  (define indice (random (length mazo))) ;; Genera un índice aleatorio
+  (list-ref mazo indice)) ;; Retornar la carta en ese índice

@@ -23,10 +23,11 @@
 
 
 
+
 ; 2. Creación de propiedades para el juego
 
 ; Dominio TDA Propiedad = id X nombre X precio X renta X dueño X casas X
-;; esHotel X estaHipotecada
+; esHotel X estaHipotecada
 ;; Recorrido TDA Propiedad = propiedad
 
 (define prop1 (propiedad 1 "Paseo Mediterráneo" 600 2 #f 0 #f #f))
@@ -52,9 +53,8 @@
 (define community1 (carta 4 "comunidad" "Pague impuestos por $100" 'pagar-impuesto))
 (define community2 (carta 5 "comunidad" "Es su cumpleaños, reciba $10 de cada jugador" 'cumpleanos))
 (define community3 (carta 6 "comunidad" "Salga de la cárcel gratis" 'salir-carcel))
-
-;; Esto cuenta como carta salidaCárcel y si el jugador obtiene esta tarjeta
-;; aumenta el contador de totalCartasSalirEnCarcel de su TDA.
+;; Esto cuenta como carta salidaCárcel y si el jugador obtiene
+;; esta tarjeta aumenta el contador de totalCartasSalirEnCarcel de su TDA.
 
 
 
@@ -63,30 +63,27 @@
 ; 4. Creación del tablero
 
 ; Dominio TDA Tablero = propiedades X cartasSuerte X cartasComunidad X
-;; casillasEspeciales (fn X posición)
+; casillasEspeciales (fn X posición)
 ; Recorrido = tablero
 ;; Las funciones de las casillas especiales usted los puede definir en este
-;;mismo archivo o en algún TDA correspondiente y acá sólo importarlo.
-
+; mismo archivo o en algún TDA correspondiente y acá sólo importarlo. 
 (define tablero-vacio
  (tablero '() ;; propiedades
  (list chance1 chance2 chance3) ;; cartas suerte
  (list community1 community2 community3) ;; cartas comunidad
  (list
  (cons 'salida 0)
- (cons 'carcel 2)
+ (cons 'carcel 2) 
  (cons 'carcel 5)
  (cons 'suerte 7)
  (cons 'suerte 12)
  (cons 'comunidad 10))))
-
 ;; casillas especiales (salida, carcel, suerte, comunidad)
 ;; posicion 0: salida
 ;; posicion 2,5: carta carcel (fn carcel)
-;; posicion 7, 12: carta suerte (cuando caiga acá debe ejecutar el requerimiento de obtener carta suerte)
+;; posicion 7, 12: carta suerte (cuando caiga acá debe ejecutar el
+;; requerimiento de obtener carta suerte)
 ;; posicion 10: carta comunidad
-
-
 
 ; Lista de propiedades con sus posiciones
 ;; (cons propiedad posicion)
@@ -94,9 +91,6 @@
  (list (cons prop1 1) (cons prop2 3) (cons prop3 6)
  (cons prop4 8) (cons prop5 9) (cons prop6 11)
  (cons prop7 13) (cons prop8 14)))
-
-
-
 ; Tablero con propiedades
 ;; Función tablero-agregar-propiedad
 ;; Recorrido: tablero
@@ -104,13 +98,15 @@
 lista-propiedades))
 
 
-;; Con lo definido en este script el tablero con las posiciones queda de la siguiente forma:
 
+
+
+;; Con lo definido en este script el tablero con las posiciones queda de la siguiente forma
 ;; (posicion entidad)
 ;; (0 salida) ;; casilla especial salida, todos comienzan en 0 luego a partir
 ;; de acá se empieza a mover. Si al lanzar dados se terminan las posiciones se
 ;; vuelve a posición 0 y se vuelve a contar. Ejemplo: jugador1 se encuentra en
-;, posicion 14 y la suma de dados es 2 entonces cae en posicion 1 (14 se mueve a
+;; posicion 14 y la suma de dados es 2 entonces cae en posicion 1 (14 se mueve a
 ;; 0, luego a 1)
 ;; (1 prop1) ;; casilla especial
 ;; (2 carcel) ;; casilla especial cárcel
@@ -130,33 +126,25 @@ lista-propiedades))
 
 
 
+
 ; 5. Creación del juego
+
 ; Dominio TDA Juego = jugadores X tablero X dineroBanco X numeroDados X
-;; turnoActual (id jugador actual) X tasaImpuesto X maxCasas X maxHoteles
-
+; turnoActual (id jugador actual) X tasaImpuesto X maxCasas X maxHoteles
 ;; Anteriormente se tenia un último valor de "estadoJuego" donde se
-;;ejemplificaba con "en preparación" Sin embargo esto no tenía utilidad para el
-;;presente laboratorio por lo que se eliminó. Si usted lo implementa no hay
-;;problema pero tenga presente que no se utilizará en nada para este enunciado.
-
-
-
-
+; ejemplificaba con "en preparación". Sin embargo esto no tenía utilidad para el
+; presente laboratorio por lo que se eliminó. Si usted lo implementa no hay
+; problema pero tenga presente que no se utilizará en nada para este enunciado.
 
 (define g0 (juego '() tablero-completo 20000 2 0 10 4 1))
 
-
-
 ; 6. Agregar jugadores al juego
+
 (define g1 (juego-agregar-jugador g0 p1))
 (define g2 (juego-agregar-jugador g1 p2))
 
-
-
-
-
 ;; La ejecución de cada turno es llamar al requerimiento de juego-jugar-turno
-;;con el uso de la función (lanzar-dados semilla1 semilla2)
+;; con el uso de la función (juego-lanzar-dado semilla1 semilla2)
 ;; Valores de referencia de la semilla:
 ;;(getDadoRandom 1) ; retorna 1
 ;;(getDadoRandom 2) ; retorna 2
@@ -165,21 +153,21 @@ lista-propiedades))
 ;;(getDadoRandom 3) ; retorna 5
 ;;(getDadoRandom 4) ; retorna 6
 ;; En cada uno de sus scripts hasta el punto 6 es constante (sólo cambiará el
-;;número de jugadores, propiedades y cartas) pero puede usar el mismo esquema.
+;; número de jugadores, propiedades y cartas) pero puede usar el mismo esquema.
 
 
 
 
 ; 7. Jugar (inicio de simulación)
 (display "===== CAPITALIA =====\n\n")
+
+
+
+
+
 ;; Ambos jugadores comienzan en posición 0
-
-
-
-
 ; Turno 1: Carlos
 (display "TURNO 1: Carlos\n")
-
 
 
 ;; (juego-jugar-turno) Se destaca en amarillo para indicar que este comando es
@@ -192,30 +180,26 @@ lista-propiedades))
 ;; construirHotel: #f
 ;; pagarMultaSalirCarcel: #f
 ;; usarTarjetaSalirCarcel: #f
-
-
-;(define g3 (juego-jugar-turno g2 (lanzar-dados 3 4) #t #f #f #f))
+g2
+(get-turno-actual g2)
+(juego-obtener-jugador-actual g2)
+;(define g3 (juego-jugar-turno g2 (juego-lanzar-dados 1 2) #t #f #f #f))
 ;g3 ;; esto imprime g3 para que lo podamos evaluar.
 
 
-
 ;; Explicación:
-;; Al usar la semilla 3 y 4 para dado1 y dado2, jugador Carlos se va a mover a
+;; Al usar la semilla 1 y 2 para dado1 y dado2, jugador Carlos se va a mover a
 ;; posición 3 (0 + dado1:1 + dado2: 2)
-
 ;; En tablero posición 3 prop2: Avenida Báltica Precio 600
 ;; (define prop2 (propiedad 2 "Avenida Báltica" 600 4 #f 0 #f #f))
-
 ;; Los últimos dos valores de juego-jugar-turno son para simplificar la
 ;; simulación del juego
-
 ;; comprarPropiedad_or_construyeCasa:: #t para controlar la simulación se
-;;indica que se construya una casa si es que puede (si cae en una de sus
+;; indica que se construya una casa si es que puede (si cae en una de sus
 ;; propiedades y se dan las condiciones para que pueda construir 1 casa entonces
 ;; se realiza, en caso de no cumplir las condiciones y el valor sea #t entonces
 ;; se ignora la construcción de la casa. Internamente ustedes deben llamar a la
 ;; función correspondiente dentro de (juego-jugar-turno)
-
 ;; construyeHotel: #f para controlar la simulación se agrega este campo para
 ;; que construya un hotel en caso de que se cumplan las condiciones, al igual que
 ;; el parametro de construyeCasa.
@@ -228,22 +212,23 @@ lista-propiedades))
 
 ; Turno 2: Ana
 ;; Semilla 2 y 5 da: (dado1:2 dado2:3), jugador Ana se va a mover a posición
-;; 5, dado que se mueve de posición a 5 (2+3)
+;;5, dado que se mueve de posición a 5 (2+3)
 ;; En tablero: posición (5 cárcel) La posición 5 es cárcel por lo que pierde
-;; el turno
-  
+;;el turno
+
+
 (display "TURNO 2: Ana\n")
 ;; comprarPropiedad_or_construirCasa: #t
 ;; construirHotel: #f
 ;; pagarMultaSalirCarcel: #f
 ;; usarTarjetaSalirCarcel: #f
-  
-;(define g4 (juego-jugar-turno g3 (lanzar-dados 2 5) #t #f #f #f))
+
+;(define g4 (juego-jugar-turno g3 (juego-lanzar-dados 2 5) #t #f #f #f))
 ;g4 ;; esto imprime g4
-  
+
+
 ; Turno 3: Carlos. Carlos se encuentra en posición 3, al usar semilla 5 y 3
-;;obtiene dado1: 3 y dado2: 5. Se mueve 8 posiciones, quedando en posición 11 (3
-;; + 8)
+;; obtiene dado1: 3 y dado2: 5. Se mueve 8 posiciones, quedando en posición 11 (3 + 8)
 ;; En tablero: posición (11 prop6) La posición 11 es prop6
 ;; Dinero actual jugador 1 Carlos = 900
 ;; (define prop6 (propiedad 6 "Plaza San Carlos" 800 10 #f 0 #f #f))
@@ -252,25 +237,27 @@ lista-propiedades))
 ;; pagarMultaSalirCarcel: #f
 ;; usarTarjetaSalirCarcel: #f
 
-  
-;(define g5 (juego-jugar-turno g4 (lanzar-dados 5 0) #t #f #f #f))
+
+;(define g5 (juego-jugar-turno g4 (juego-lanzar-dados 5 0) #t #f #f #f))
 ;g5 ;; esto imprime g5
+
+
 ;; Dinero actual jugador 1 Carlos = 900-800 (construyo casa) = 100
 ;; g5 entrega el estado actualizado del juego
 ; Turno 4: Ana. Ana se encuentra en posición 5 pero sigue en la cárcel. En
-;; este turno paga la multa para salir de la cárcel
+;;este turno paga la multa para salir de la cárcel
 ; cómo paga multa (la multa es siempre 500) entonces su presupuesto queda:
-;; 1500-500 = 1000
+;;1500-500 = 1000
 ;; comprarPropiedad_or_construirCasa: #f
 ;; construirHotel: #f
 ;; pagarMultaSalirCarcel: #t
 ;; usarTarjetaSalirCarcel: #f
 
-  
-;(define g6 (juego-jugar-turno g5 (lanzar-dados 3 4) #f #f #t #f))
+
+;(define g6 (juego-jugar-turno g5 (juego-lanzar-dado 3 4) #f #f #t #f))
 ;g6 ;; esto imprime g6
 
-  
+
 
 ; Turno 5: Carlos.
 ; Dinero actual jugador 1 Carlos = 900
@@ -278,8 +265,8 @@ lista-propiedades))
 ; usa semilla 1 y 2, dando los dados 1 y 2, por lo que la suma da 3
 ; movimiento es de 11 a 14 (11 + 3)
 ; Cae a posición 14 donde la propiedad cuesta 900 y cómo usa el valor #t de la
-;; propiedad entonces procede a comprar
-;; : dado que llego a 0 entonces el jugador está en bancarrota y termina el juego
+; propiedad entonces procede a comprar
+; : dado que llego a 0 entonces el jugador está en bancarrota y termina el juego
 ; el juego termina cuando uno de los jugadores llega a 0
 ; (define prop8 (propiedad 8 "Avenida Tennessee" 900 14 #f 0 #f #f))
 ;; comprarPropiedad_or_construirCasa: #t
@@ -288,18 +275,18 @@ lista-propiedades))
 ;; usarTarjetaSalirCarcel: #f
 
 
- 
-;(define g7 (juego-jugar-turno g6 (lanzar-dados 1 2) #t #f #f #f))
+;(define g7 (juego-jugar-turno g6 (juego-lanzar-dados 1 2) #t #f #f #f))
 ;g7 ;; esto imprime g7
 
-  
+
 ;; para verificar que todo esté correcto g7 va a entregar que el jugador 1
-;; carlos tiene saldo/prespuesto 0 eso implica de que el jugador se encuentra en
-;; bancarrota y no se puede seguir jugando
+;;carlos tiene saldo/prespuesto 0 eso implica de que el jugador se encuentra en
+;;bancarrota y no se puede seguir jugando
 ; El comando jugador-esta-en-bancarrota se debe ejecutar al final del juego
 ;;para el usuario vea en pantalla si efectivamente algun jugador se encuentra en
-;; bancarrota y que el juego termino
-  
+;;bancarrota y que el juego termino
+
+
 ;(jugador-esta-en-bancarrota jugador1) ;; va a entregar #t
 ;; Donde jugador1 lo pueden obtener con un selector del jugador en el juego
 ;; Por ejemplo pueden ejecutarlo como:

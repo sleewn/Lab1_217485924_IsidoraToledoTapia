@@ -1,10 +1,12 @@
 #lang racket
 
-
 (require "player_21748592_Isidora_ToledoTapia.rkt")
 (require "property_21748592_Isidora_ToledoTapia.rkt")
 (require "card_21748592_Isidora_ToledoTapia.rkt")
 (require "board_21748592_Isidora_ToledoTapia.rkt")
 (require "game_21748592_Isidora_ToledoTapia.rkt")
 
-
+(define p1 (jugador 1 "Carlos" 1500 '() 0 #f 0))
+(define p2 (jugador 2 "Ana" 1500 '() 0 #f 0))
+p1
+p2
